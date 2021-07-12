@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./pages/index.css">
+  <title>Mesto</title>
+</head>
+<body class="page">
+
+  <header class="header">
+   <a href="#"><img class="header__logo" src="./images/header__logo.svg" alt="логотип"></a>
+   <!--Раз уж содержимое сайта не соответствует логотипу в макете, я взяла на себя смелость
+     часть "Russia" обрезать-->
+  </header>
+
+  <main class="main">
+
+    <section class="profile">
+      <img class="profile__avatar" src="./images/lampcat_avatar.jpg" alt="аватар">
+      <div class="profile__info">
+        <div class="profile__main-info">
+          <h1 class="profile__name">Кот-светильник</h1>
+          <button class="profile__edit-button"></button>
+        </div>
+        <p class="profile__description">Широко известный в узких кругах путешественник.</p>
+      </div>
+      <button class="profile__add-button"></button>
+    </section>
+
+    <section class="cards-section">
+      <ul class="cards">
+        <li class="card">
+          <img class="card__img" src="./images/lampcat_London.jpg" alt="Кот в Лондоне">
+          <div class="card__items">
+            <p class="card__capture">Лондон</p>
+            <button class="card__like-button"></button>
+          </div>
+        </li>
+        <li class="card">
+          <img class="card__img" src="./images/lampcat_Moscow.jpg" alt="Кот в Москве">
+          <div class="card__items">
+            <p class="card__capture">Москва</p>
+            <button class="card__like-button"></button>
+          </div>
+        </li>
+        <li class="card">
+          <img class="card__img" src="./images/lampcat_GNovgorod.jpg" alt="Кот в Великом Новгороде">
+          <div class="card__items">
+            <p class="card__capture">Великий Новгород</p>
+            <button class="card__like-button"></button>
+          </div>
+        </li>
+        <li class="card">
+          <img class="card__img" src="./images/lampcat_Turkey.jpg" alt="Кот в Турции">
+          <div class="card__items">
+            <p class="card__capture">Турция</p>
+            <button class="card__like-button"></button>
+          </div>
+        </li>
+        <li class="card">
+          <img class="card__img" src="./images/lampcat_tver'.jpg" alt="Кот в Твери">
+          <div class="card__items">
+            <p class="card__capture">Тверь</p>
+            <button class="card__like-button"></button>
+          </div>
+        </li>
+        <li class="card">
+          <img class="card__img" src="./images/lampcat_Yandex.jpg" alt="Кот в Яндексе">
+          <div class="card__items">
+            <p class="card__capture">Яндекс</p>
+            <button class="card__like-button"></button>
+          </div>
+        </li>
+        <li class="card">
+          <img class="card__img" src="./images/lampcat_Kmountain.jpg" alt="Кот на Кудыкиной горе">
+          <div class="card__items">
+            <p class="card__capture">Кудыкина гора</p>
+            <button class="card__like-button"></button>
+          </div>
+        </li>
+        <li class="card">
+          <img class="card__img" src="./images/catlamp_Tula.jpg" alt="Кот в Туле">
+          <div class="card__items">
+            <p class="card__capture">Тула и памятник тульскому прянику</p>
+            <button class="card__like-button"></button>
+          </div>
+        </li>
+        <li class="card">
+          <img class="card__img" src="./images/catlamp_SPetersburgh.jpg" alt="Кот в Петербурге">
+          <div class="card__items">
+            <p class="card__capture">Санкт-Петербург</p>
+            <button class="card__like-button"></button>
+          </div>
+        </li>
+        <li class="card">
+          <img class="card__img" src="./images/catlamp__SanMishel.jpg" alt="Кот в Мон-Сен-Мишель">
+          <div class="card__items">
+            <p class="card__capture">Мон-Сен-Мишель</p>
+            <button class="card__like-button"></button>
+          </div>
+        </li>
+        <li class="card">
+          <img class="card__img" src="./images/catlamp_NotrDam.jpg" alt="Кот в Нотр-Дам">
+          <div class="card__items">
+            <p class="card__capture">Нотр-Дам</p>
+            <button class="card__like-button"></button>
+          </div>
+        </li>
+
+      </ul>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p class="footer__copyright">&#169;2021 Karpova Valentina</p>
+  </footer>
+
+  <div class="popup">
+    <div class="popup__container">
+      <button class="popup__close"></button>
+      <h2 class="popup__title">Редактировать профиль</h2>
+      <form class=" popup__form">
+        <input class="popup__input" type="text" name="name" id="popupTitle" value="Кот-светильник">
+        <input class="popup__input" type="text" name="description" id="popupDescription" value="Широко известный в узких кругах путешественник.">
+        <button class="popup__button" type="submit">Сохранить</button>
+      </form>
+    </div>
+  </div>
+
+<script src="./scripts/index.js"></script>
+
+</body>
+</html>
