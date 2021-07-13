@@ -4,13 +4,12 @@
   list-style: none;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 17px 16px;
+  gap: 20px 16px;
 }
 
 @media screen and (max-width: 910px) {
   .cards {
     grid-template-columns: repeat(2, 1fr);
-    gap: 17px 16px;
     margin: 0 auto;
     max-width: 580px;
   }
@@ -19,8 +18,6 @@
 @media screen and (max-width: 630px) {
   .cards {
     grid-template-columns: 1fr;
-    row-gap: 21px;
-    margin: 0 auto;
     max-width: 282px;
   }
 }
