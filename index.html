@@ -11,8 +11,6 @@
 
   <header class="header">
    <a href="#"><img class="header__logo" src="./images/header__logo.svg" alt="логотип"></a>
-   <!--Раз уж содержимое сайта не соответствует логотипу в макете, я взяла на себя смелость
-     часть "Russia" обрезать-->
   </header>
 
   <main class="main">
@@ -22,11 +20,11 @@
       <div class="profile__info">
         <div class="profile__main-info">
           <h1 class="profile__name">Кот-светильник</h1>
-          <button class="profile__edit-button button"></button>
+          <button type="button" class="profile__edit-button button"></button>
         </div>
         <p class="profile__description">Широко известный в узких кругах путешественник.</p>
       </div>
-      <button class="profile__add-button button"></button>
+      <button type="button" class="profile__add-button button"></button>
     </section>
 
     <section class="cards-section">
@@ -34,43 +32,43 @@
         <li class="card">
           <img class="card__img" src="./images/lampcat_London.jpg" alt="Кот в Лондоне">
           <div class="card__items">
-            <p class="card__capture">Лондон</p>
-            <button class="card__like-button button"></button>
+            <h2 class="card__capture">Лондон</h2>
+            <button type="button" class="card__like-button button"></button>
           </div>
         </li>
         <li class="card">
           <img class="card__img" src="./images/lampcat_Moscow.jpg" alt="Кот в Москве">
           <div class="card__items">
-            <p class="card__capture">Москва</p>
-            <button class="card__like-button button"></button>
+            <h2 class="card__capture">Москва</h2>
+            <button type="button" class="card__like-button button"></button>
           </div>
         </li>
         <li class="card">
           <img class="card__img" src="./images/lampcat_tver'.jpg" alt="Кот в Твери">
           <div class="card__items">
-            <p class="card__capture">Тверь</p>
-            <button class="card__like-button button"></button>
+            <h2 class="card__capture">Тверь</h2>
+            <button type="button" class="card__like-button button"></button>
           </div>
         </li>
         <li class="card">
           <img class="card__img" src="./images/lampcat_Yandex.jpg" alt="Кот в Яндексе">
           <div class="card__items">
-            <p class="card__capture">Яндекс</p>
-            <button class="card__like-button button"></button>
+            <h2 class="card__capture">Яндекс</h2>
+            <button type="button" class="card__like-button button"></button>
           </div>
         </li>
         <li class="card">
           <img class="card__img" src="./images/lampcat_Kmountain.jpg" alt="Кот на Кудыкиной горе">
           <div class="card__items">
-            <p class="card__capture">Кудыкина гора</p>
-            <button class="card__like-button button"></button>
+            <h2 class="card__capture">Кудыкина гора</h2>
+            <button type="button" class="card__like-button button"></button>
           </div>
         </li>
         <li class="card">
           <img class="card__img" src="./images/catlamp_Tula.jpg" alt="Кот в Туле">
           <div class="card__items">
-            <p class="card__capture">Тула и памятник тульскому прянику</p>
-            <button class="card__like-button button"></button>
+            <h2 class="card__capture">Тула и памятник тульскому прянику</h2>
+            <button type="button" class="card__like-button button"></button>
           </div>
         </li>
       </ul>
@@ -84,11 +82,11 @@
 
   <div class="popup">
     <div class="popup__container">
-      <button class="popup__close"></button>
+      <button type="button" class="popup__close"></button>
       <h2 class="popup__title">Редактировать профиль</h2>
-      <form class=" popup__form">
-        <input class="popup__input" type="text" name="name" id="popupTitle" value="Кот-светильник">
-        <input class="popup__input" type="text" name="description" id="popupDescription" value="Широко известный в узких кругах путешественник.">
+      <form class=" popup__form" name="profile">
+        <input class="popup__input input" type="text" name="name" id="popupTitle" value="">
+        <input class="popup__input input" type="text" name="description" id="popupDescription" value="">
         <button class="popup__button" type="submit">Сохранить</button>
       </form>
     </div>
