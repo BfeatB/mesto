@@ -1,14 +1,12 @@
 .header {
   margin: 44px 0 0 0;
   border-bottom: solid 1px rgb(84, 84, 84, .7);
-  min-height: 74px;
   max-width: 880px;
   min-width: 300px;
 }
 
 @media screen and (max-width: 400px) {
   .header {
-    min-height: 56px;
     margin: 24px 0 0 0;
   }
 }
