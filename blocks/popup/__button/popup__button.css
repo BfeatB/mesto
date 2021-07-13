@@ -8,7 +8,8 @@
   color: #FFFFFF;
   margin: 0 auto;
   border: none;
-  margin-top: 22px;
+  margin: 22px auto 38px auto;
+  border-radius: 2px;
 }
 
 .popup__button:hover {
@@ -21,6 +22,6 @@
     width: 240px;
     font-size: 14px;
     line-height: 17px;
-    margin-top: 16px;
+    margin: 16px auto 24px auto;
   }
 }
