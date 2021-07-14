@@ -17,14 +17,10 @@ function onClickEditButton(){
   descriptionInput.value = descriptionProfile.textContent;
 }
 
-editButton.addEventListener("click", onClickEditButton);
-
 //Close popup
 function onClickCloseButton(){
   editPopup.classList.remove("popup_opened");
 }
-
-closeButton.addEventListener("click", onClickCloseButton);
 
 //Send data from popup to profile.
 function formSubmitHandler (evt) {
@@ -35,6 +31,8 @@ function formSubmitHandler (evt) {
 }
 
 popupForm.addEventListener('submit', formSubmitHandler);
+editButton.addEventListener("click", onClickEditButton);
+closeButton.addEventListener("click", onClickCloseButton);
 
 
 
