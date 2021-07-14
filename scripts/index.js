@@ -28,7 +28,7 @@ closeButton.addEventListener("click", onClickCloseButton);
 
 //Send data from popup to profile.
 function formSubmitHandler (evt) {
-	evt.preventDefault();
+  evt.preventDefault();
   nameProfile.textContent = nameInput.value;
   descriptionProfile.textContent = descriptionInput.value;
   onClickCloseButton();
