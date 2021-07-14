@@ -8,6 +8,7 @@
   color: #000000;
   padding-bottom: 9px;
   padding-top: 3px;
+  outline: none;
 }
 
 @media screen and (max-width: 630px) {
