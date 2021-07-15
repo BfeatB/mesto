@@ -2,5 +2,6 @@
   width: 282px;
   height: 282px;
   object-fit: cover;
-  border-radius: inherit;
+  border-top-left-radius: inherit;
+  border-top-right-radius: inherit;
 }
