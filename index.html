@@ -20,11 +20,11 @@
       <div class="profile__info">
         <div class="profile__main-info">
           <h1 class="profile__name">Кот-светильник</h1>
-          <button type="button" class="profile__edit-button button"></button>
+          <button type="button" class="profile__edit-button button js-open-popup" data-popupId="popupProfile"></button>
         </div>
         <p class="profile__description">Широко известный в узких кругах путешественник.</p>
       </div>
-      <button type="button" class="profile__add-button button"></button>
+      <button type="button" class="profile__add-button button js-open-popup" data-popupId="popupPlace"></button>
     </section>
 
     <section class="cards-section">
@@ -80,17 +80,33 @@
     <p class="footer__copyright">&#169;2021 Karpova Valentina</p>
   </footer>
 
-  <div class="popup">
+<!--Profile popup-->
+
+  <div class="popup" id="popupProfile">
     <div class="popup__container">
-      <button type="button" class="popup__close"></button>
+      <button type="button" class="popup__close js-close-popup" data-popupId="popupProfile"></button>
       <h3 class="popup__title">Редактировать профиль</h3>
       <form class=" popup__form" name="profile">
         <input class="popup__input" type="text" name="name" id="popupTitle" value="">
         <input class="popup__input" type="text" name="description" id="popupDescription" value="">
-        <button class="popup__button button" type="submit">Сохранить</button>
+        <button class="popup__button button js-close-popup" type="submit" data-popupId="popupProfile">Сохранить</button>
       </form>
     </div>
   </div>
+
+<!--Place popup-->
+
+<div class="popup" id="popupPlace">
+  <div class="popup__container">
+    <button type="button" class="popup__close js-close-popup" data-popupId="popupPlace"></button>
+    <h3 class="popup__title">Новое место</h3>
+    <form class=" popup__form" name="profile">
+      <input class="popup__input" type="text" name="place" id="popupPlace" placeholder="Название места">
+      <input class="popup__input" type="text" name="url" id="popupUrl" placeholder="Ссылка на картинку">
+      <button class="popup__button button js-close-popup" type="submit" data-popupId="popupPlace">Сохранить</button>
+    </form>
+  </div>
+</div>
 
 <script src="./scripts/index.js"></script>
 
