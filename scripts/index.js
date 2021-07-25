@@ -10,6 +10,57 @@ let descriptionInput = popupForm.querySelector("input[name='description']");
 
 let closeButton = document.querySelector(".js-close-popup");
 
+const initialCards = [
+  {
+    name: 'Санкт-Петербург',
+    link: './images/catlamp_SPetersburgh.jpg',
+    alt: 'Кот в Петербурге'
+  },
+
+  {
+    name: 'Москва',
+    link: './images/lampcat_Moscow.jpg',
+    alt: 'Кот в Москве'
+  },
+
+  {
+    name: 'Тверь',
+    link: './images/lampcat_tver.jpg',
+    alt: 'Кот в Твери'
+  },
+
+  {
+    name: 'Яндекс',
+    link: './images/lampcat_Yandex.jpg',
+    alt: 'Кот в Яндексе'
+  },
+
+  {
+    name: 'Кудыкина гора',
+    link: './images/lampcat_Kmountain.jpg',
+    alt: 'Кот на Кудыкиной горе'
+  },
+
+  {
+    name: 'Тула и памятник тульскому прянику',
+    link: './images/catlamp_Tula.jpg',
+    alt: 'Кот в Туле'
+  },
+];
+
+const cardTemplate = document.getElementById("cardTemplate");
+const cardsContainer = document.querySelector(".cards");
+
+//Initial cards
+
+for (const card of initialCards) {
+  const cardNode = cardTemplate.content.cloneNode(true);
+  cardNode.querySelector(".card__img").setAttribute("src", card.link);
+  cardNode.querySelector(".card__img").setAttribute("alt", card.alt);
+  cardNode.querySelector(".card__capture").textContent = card.name;
+  cardsContainer.appendChild(cardNode);
+}
+
 //Open popups
 
 document.addEventListener("click", function(e) {
