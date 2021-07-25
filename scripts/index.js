@@ -73,7 +73,7 @@ function openPopup(id) {
   document.getElementById(id).classList.add("popup_opened");
 }
 
-//Add data to the edit form when a popup is opening
+//Add data to the edit form while a popup is opening
 
 function onClickEditButton(){
   nameInput.value = nameProfile.textContent;

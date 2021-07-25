@@ -42,6 +42,7 @@
 <!--Template for place cards-->
 <template id="cardTemplate">
   <li class="card">
+    <button type="button" class="card__delete-button js-delete-card"></button>
     <img class="card__img" src="" alt="">
     <div class="card__items">
       <h2 class="card__capture"></h2>
@@ -59,7 +60,7 @@
       <form class=" popup__form" name="profile">
         <input class="popup__input" type="text" name="name" id="popupTitle" value="">
         <input class="popup__input" type="text" name="description" id="popupDescription" value="">
-        <button class="popup__button button js-close-popup" type="submit" data-popupId="popupProfile">Сохранить</button>
+        <button class="popup__button button js-close-popup" type="submit" data-popupId="popupProfile">Создать</button>
       </form>
     </div>
   </div>
