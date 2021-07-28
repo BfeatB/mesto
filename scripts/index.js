@@ -10,6 +10,8 @@ let descriptionInput = popupForm.querySelector("input[name='description']");
 
 let closeButton = document.querySelector(".js-close-popup");
 
+const likeButton = document.querySelector(".card__like-button");
+
 const initialCards = [
   {
     name: 'Санкт-Петербург',
@@ -54,18 +56,14 @@ const cardsContainer = document.querySelector(".cards");
 //Initial cards
 
 for (const card of initialCards) {
-  const cardNode = cardTemplate.content.cloneNode(true);
-  cardNode.querySelector(".card__img").setAttribute("src", card.link);
-  cardNode.querySelector(".card__img").setAttribute("alt", card.alt);
-  cardNode.querySelector(".card__capture").textContent = card.name;
-  cardsContainer.appendChild(cardNode);
+  cardsContainer.appendChild(createCard(card));
 }
 
 //Open popups
 
-document.addEventListener("click", function(e) {
-  if (e.target.classList.contains("js-open-popup")) {
-    openPopup(e.target.dataset.popupid);
+document.addEventListener("click", function(evt) {
+  if (evt.target.classList.contains("js-open-popup")) {
+    openPopup(evt.target.dataset.popupid);
   }
 });
 
@@ -82,9 +80,9 @@ function onClickEditButton(){
 
 //Close popups
 
-document.addEventListener("click", function(e) {
-  if (e.target.classList.contains("js-close-popup")) {
-    closePopup(e.target.dataset.popupid);
+document.addEventListener("click", function(evt) {
+  if (evt.target.classList.contains("js-close-popup")) {
+    closePopup(evt.target.dataset.popupid);
   }
 });
 
@@ -105,6 +103,25 @@ function formAddCard (evt) {
   evt.preventDefault();
   closePopup(id);
 }
+
+//create cards
+function createCard (card) {
+  const cardNode = cardTemplate.content.cloneNode(true);
+  cardNode.querySelector(".card__img").setAttribute("src", card.link);
+  cardNode.querySelector(".card__img").setAttribute("alt", card.alt);
+  cardNode.querySelector(".card__capture").textContent = card.name;
+  cardNode.querySelector('.card__like-button').addEventListener('click', function(evt) {
+    evt.target.classList.toggle('card__like-button_active');
+  });
+
+  return cardNode;
+}
+
+//Like button
+
+likeButton.addEventListener('click', function(evt) {
+  evt.target.classList.toggle('card__like-button_active');
+});
 
 popupForm.addEventListener('submit', formSubmitHandler);
 closeButton.addEventListener("click", closePopup);
