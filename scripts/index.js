@@ -127,9 +127,15 @@ function createCard (card) {
   cardNode.querySelector('.card__like-button').addEventListener('click', function(evt) {
     evt.target.classList.toggle('card__like-button_active');
   });
-
+  cardNode.querySelector('.card__delete-button').addEventListener('click', function(evt) {
+    evt.target.closest(".card").remove();
+  });
   return cardNode;
 }
+
+//galary
+
+
 
 popupForm.addEventListener('submit', formSubmitEditProfileHandler);
 closeButton.addEventListener("click", closePopup);
