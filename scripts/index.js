@@ -64,7 +64,7 @@ const galleryImg = document.querySelector(".popup__img-gallery");
 const galleryCapture = document.querySelector(".popup__figcaption");
 const cardCapture = document.querySelector(".card__capture");
 
-//Initial cards
+//Load existing cards
 
 for (const card of initialCards) {
   cardsContainer.appendChild(createCard(card));
@@ -82,7 +82,7 @@ function openPopup(id) {
   document.getElementById(id).classList.add("popup_opened");
 }
 
-//Add data to the edit form while a popup is opening
+//Add data to the edit form when the popup opens
 
 function onClickEditButton(){
   nameInput.value = nameProfile.textContent;
@@ -101,7 +101,7 @@ function closePopup(id) {
   document.getElementById(id).classList.remove("popup_opened");
 }
 
-//Send data from popup to profile
+//Send data from the popup to the profile form
 
 function formSubmitEditProfileHandler (evt) {
   evt.preventDefault();
