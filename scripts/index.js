@@ -130,11 +130,13 @@ function formSubmitAddCardHandler (evt) {
 }
 
 //create cards
+
 function createCard (card) {
   const cardNode = cardTemplate.content.cloneNode(true);
-  cardNode.querySelector(".card__img").setAttribute("src", card.link);
-  cardNode.querySelector(".card__img").setAttribute("alt", card.alt);
-  cardNode.querySelector(".card__img").addEventListener("click", onCardImgClick);
+  const cardNodeImg = cardNode.querySelector(".card__img");
+  cardNodeImg.setAttribute("src", card.link);
+  cardNodeImg.setAttribute("alt", card.alt);
+  cardNodeImg.addEventListener("click", onCardImgClick);
   cardNode.querySelector(".card__capture").textContent = card.name;
   cardNode.querySelector('.card__like-button').addEventListener('click', function(evt) {
     evt.target.classList.toggle('card__like-button_active');
