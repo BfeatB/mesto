@@ -5,7 +5,6 @@
   width: 430px;
   position: relative;
   box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
-  transition: all 5s ease-in-out;
 }
 
 @media screen and (max-width: 630px) {
