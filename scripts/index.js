@@ -58,6 +58,12 @@ const placeNameInput = addCardPopup.querySelector("input[name='place']");
 const placeImgInput = addCardPopup.querySelector("input[name='url']");
 const addCardForm = addCardPopup.querySelector(".popup__form");
 
+const card = cardsContainer.querySelector(".card");
+const galaryPopup = document.getElementById("popupGalary");
+const galaryImg = document.querySelector(".popup__img-galary");
+const galaryCapture = document.querySelector(".popup__figcaption");
+const cardCapture = document.querySelector(".card__capture");
+
 //Initial cards
 
 for (const card of initialCards) {
@@ -110,12 +116,17 @@ function formSubmitAddCardHandler (evt) {
   evt.preventDefault();
   const placeName = placeNameInput.value;
   const placeImg = placeImgInput.value;
+  if (placeName.length === 0 || placeImg.length === 0) {
+    return;
+  }
   cardsContainer.prepend(createCard ({
     name: placeName,
     link: placeImg,
     alt: placeName
   }));
   closePopup("popupPlace");
+  placeNameInput.value = "";
+  placeImgInput.value = "";
 }
 
 //create cards
@@ -123,6 +134,7 @@ function createCard (card) {
   const cardNode = cardTemplate.content.cloneNode(true);
   cardNode.querySelector(".card__img").setAttribute("src", card.link);
   cardNode.querySelector(".card__img").setAttribute("alt", card.alt);
+  cardNode.querySelector(".card__img").addEventListener("click", onCardImgClick);
   cardNode.querySelector(".card__capture").textContent = card.name;
   cardNode.querySelector('.card__like-button').addEventListener('click', function(evt) {
     evt.target.classList.toggle('card__like-button_active');
@@ -133,7 +145,13 @@ function createCard (card) {
   return cardNode;
 }
 
-//galary
+// Open the galary
+
+function onCardImgClick (evt) {
+  galaryImg.setAttribute("src", evt.target.getAttribute("src"));
+  galaryImg.setAttribute("alt", evt.target.getAttribute("alt"));
+  galaryCapture.textContent = evt.target.getAttribute("alt");
+}
 
 
 
@@ -141,6 +159,7 @@ popupForm.addEventListener('submit', formSubmitEditProfileHandler);
 closeButton.addEventListener("click", closePopup);
 editButton.addEventListener("click", onClickEditButton);
 addCardForm.addEventListener("submit", formSubmitAddCardHandler);
+
 
 
 
