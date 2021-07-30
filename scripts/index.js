@@ -59,9 +59,9 @@ const placeImgInput = addCardPopup.querySelector("input[name='url']");
 const addCardForm = addCardPopup.querySelector(".popup__form");
 
 const card = cardsContainer.querySelector(".card");
-const galaryPopup = document.getElementById("popupGalary");
-const galaryImg = document.querySelector(".popup__img-galary");
-const galaryCapture = document.querySelector(".popup__figcaption");
+const galleryPopup = document.getElementById("popupGallery");
+const galleryImg = document.querySelector(".popup__img-gallery");
+const galleryCapture = document.querySelector(".popup__figcaption");
 const cardCapture = document.querySelector(".card__capture");
 
 //Initial cards
@@ -147,12 +147,12 @@ function createCard (card) {
   return cardNode;
 }
 
-// Open the galary
+// Open the gallery
 
 function onCardImgClick (evt) {
-  galaryImg.setAttribute("src", evt.target.getAttribute("src"));
-  galaryImg.setAttribute("alt", evt.target.getAttribute("alt"));
-  galaryCapture.textContent = evt.target.getAttribute("alt");
+  galleryImg.setAttribute("src", evt.target.getAttribute("src"));
+  galleryImg.setAttribute("alt", evt.target.getAttribute("alt"));
+  galleryCapture.textContent = evt.target.getAttribute("alt");
 }
 
 
