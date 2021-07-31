@@ -1,5 +1,5 @@
 const editButton = document.querySelector(".profile__edit-button");
-const editPopup = document.querySelector(".popup");
+const editPopup = document.getElementById("popupProfile");
 
 const nameProfile = document.querySelector(".profile__name");
 const descriptionProfile = document.querySelector(".profile__description");
@@ -9,6 +9,7 @@ const nameInput = popupForm.querySelector("input[name='name']");
 const descriptionInput = popupForm.querySelector("input[name='description']");
 
 const closeButton = document.querySelector(".js-close-popup");
+const openButton = document.querySelector(".js-open-popup");
 
 const likeButton = document.querySelector(".card__like-button");
 
@@ -53,7 +54,8 @@ const initialCards = [
 const cardTemplate = document.getElementById("cardTemplate");
 const cardsContainer = document.querySelector(".cards");
 
-const addCardPopup = document.getElementById("popupPlace")
+const addCardPopup = document.getElementById("popupPlace");
+const addButton = document.querySelector(".profile__add-button");
 const placeNameInput = addCardPopup.querySelector("input[name='place']");
 const placeImgInput = addCardPopup.querySelector("input[name='url']");
 const addCardForm = addCardPopup.querySelector(".popup__form");
@@ -64,6 +66,8 @@ const galleryImg = document.querySelector(".popup__img-gallery");
 const galleryCapture = document.querySelector(".popup__figcaption");
 const cardCapture = document.querySelector(".card__capture");
 
+const closeButtons = document.querySelectorAll('.popup__close');
+
 //Load existing cards
 
 for (const card of initialCards) {
@@ -72,42 +76,47 @@ for (const card of initialCards) {
 
 //Open popups
 
-document.addEventListener("click", function(evt) {
-  if (evt.target.classList.contains("js-open-popup")) {
-    openPopup(evt.target.dataset.popupid);
-  }
-});
-
-function openPopup(id) {
-  document.getElementById(id).classList.add("popup_opened");
-}
-
-//Add data to the edit form when the popup opens
-
-function onClickEditButton(){
-  nameInput.value = nameProfile.textContent;
-  descriptionInput.value = descriptionProfile.textContent;
+function openPopup(popup) {
+  popup.classList.add("popup_opened");
 }
 
 //Close popups
 
-document.addEventListener("click", function(evt) {
-  if (evt.target.classList.contains("js-close-popup")) {
-    closePopup(evt.target.dataset.popupid);
-  }
-});
-
-function closePopup(id) {
-  document.getElementById(id).classList.remove("popup_opened");
+function closePopup(popup) {
+  popup.classList.remove("popup_opened");
 }
 
-//Send data from the popup to the profile form
+//Add data to the edit form and open the popup
+
+function onClickEditButton() {
+  nameInput.value = nameProfile.textContent;
+  descriptionInput.value = descriptionProfile.textContent;
+  openPopup(editPopup);
+}
+
+//Open the add cards popup
+
+function onClickAddButton() {
+  openPopup(addCardPopup);
+}
+
+
+// Open the gallery
+
+function onCardImgClick (evt) {
+  galleryImg.setAttribute("src", evt.target.getAttribute("src"));
+  galleryImg.setAttribute("alt", evt.target.getAttribute("alt"));
+  galleryCapture.textContent = evt.target.getAttribute("alt");
+  openPopup(galleryPopup);
+}
+
+//Send data from the popup to the profile form and close the popup
 
 function formSubmitEditProfileHandler (evt) {
   evt.preventDefault();
   nameProfile.textContent = nameInput.value;
   descriptionProfile.textContent = descriptionInput.value;
-  closePopup("popupProfile");
+  closePopup(editPopup);
 }
 
 //Add a new card
@@ -121,11 +130,11 @@ function formSubmitAddCardHandler (evt) {
     link: placeImg,
     alt: placeName
   }));
-  closePopup("popupPlace");
+  closePopup(addCardPopup);
   addCardForm.reset();
 }
 
-//create cards
+//Create cards
 
 function createCard (card) {
   const cardNode = cardTemplate.content.cloneNode(true);
@@ -143,19 +152,14 @@ function createCard (card) {
   return cardNode;
 }
 
-// Open the gallery
-
-function onCardImgClick (evt) {
-  galleryImg.setAttribute("src", evt.target.getAttribute("src"));
-  galleryImg.setAttribute("alt", evt.target.getAttribute("alt"));
-  galleryCapture.textContent = evt.target.getAttribute("alt");
-}
+//Close all popups with a close button
 
 
 
 popupForm.addEventListener('submit', formSubmitEditProfileHandler);
 editButton.addEventListener("click", onClickEditButton);
 addCardForm.addEventListener("submit", formSubmitAddCardHandler);
+addButton.addEventListener("click", onClickAddButton);
 
 
 
