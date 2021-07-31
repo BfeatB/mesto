@@ -158,7 +158,6 @@ function onCardImgClick (evt) {
 
 
 popupForm.addEventListener('submit', formSubmitEditProfileHandler);
-closeButton.addEventListener("click", closePopup);
 editButton.addEventListener("click", onClickEditButton);
 addCardForm.addEventListener("submit", formSubmitAddCardHandler);
 
