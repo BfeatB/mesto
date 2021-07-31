@@ -4,50 +4,45 @@ const editPopup = document.getElementById("popupProfile");
 const nameProfile = document.querySelector(".profile__name");
 const descriptionProfile = document.querySelector(".profile__description");
 
-const popupForm = document.querySelector(".popup__form");
-const nameInput = popupForm.querySelector("input[name='name']");
-const descriptionInput = popupForm.querySelector("input[name='description']");
-
-const closeButton = document.querySelector(".js-close-popup");
-const openButton = document.querySelector(".js-open-popup");
-
-const likeButton = document.querySelector(".card__like-button");
+const popupEditForm = document.querySelector(".popup__form");
+const nameInput = popupEditForm.querySelector("input[name='name']");
+const descriptionInput = popupEditForm.querySelector("input[name='description']");
 
 const initialCards = [
   {
-    name: 'Санкт-Петербург',
-    link: './images/catlamp_SPetersburgh.jpg',
-    alt: 'Кот в Петербурге'
+    name: "Санкт-Петербург",
+    link: "./images/catlamp_SPetersburgh.jpg",
+    alt: "Кот в Петербурге"
   },
 
   {
-    name: 'Москва',
-    link: './images/lampcat_Moscow.jpg',
-    alt: 'Кот в Москве'
+    name: "Москва",
+    link: "./images/lampcat_Moscow.jpg",
+    alt: "Кот в Москве"
   },
 
   {
-    name: 'Тверь',
-    link: './images/lampcat_tver.jpg',
-    alt: 'Кот в Твери'
+    name: "Тверь",
+    link: "./images/lampcat_tver.jpg",
+    alt: "Кот в Твери"
   },
 
   {
-    name: 'Яндекс',
-    link: './images/lampcat_Yandex.jpg',
-    alt: 'Кот в Яндексе'
+    name: "Яндекс",
+    link: "./images/lampcat_Yandex.jpg",
+    alt: "Кот в Яндексе"
   },
 
   {
-    name: 'Кудыкина гора',
-    link: './images/lampcat_Kmountain.jpg',
-    alt: 'Кот на Кудыкиной горе'
+    name: "Кудыкина гора",
+    link: "./images/lampcat_Kmountain.jpg",
+    alt: "Кот на Кудыкиной горе"
   },
 
   {
-    name: 'Тула и памятник тульскому прянику',
-    link: './images/catlamp_Tula.jpg',
-    alt: 'Кот в Туле'
+    name: "Тула и памятник тульскому прянику",
+    link: "./images/catlamp_Tula.jpg",
+    alt: "Кот в Туле"
   },
 ];
 
@@ -66,7 +61,7 @@ const galleryImg = document.querySelector(".popup__img-gallery");
 const galleryCapture = document.querySelector(".popup__figcaption");
 const cardCapture = document.querySelector(".card__capture");
 
-const closeButtons = document.querySelectorAll('.popup__close');
+const closeButtons = document.querySelectorAll(".popup__close");
 
 //Load existing cards
 
@@ -94,23 +89,24 @@ function onClickEditButton() {
   openPopup(editPopup);
 }
 
-//Open the add cards popup
+//Open add card popup
 
 function onClickAddButton() {
   openPopup(addCardPopup);
 }
 
-
-// Open the gallery
+//Open the gallery
 
 function onCardImgClick (evt) {
-  galleryImg.setAttribute("src", evt.target.getAttribute("src"));
-  galleryImg.setAttribute("alt", evt.target.getAttribute("alt"));
-  galleryCapture.textContent = evt.target.getAttribute("alt");
+  const newSrc = evt.target.getAttribute("src");
+  const newAlt = evt.target.getAttribute("alt");
+  galleryImg.setAttribute("src", newSrc);
+  galleryImg.setAttribute("alt", newAlt);
+  galleryCapture.textContent = newAlt;
   openPopup(galleryPopup);
 }
 
-//Send data from the popup to the profile form and close the popup
+//Update user profile
 
 function formSubmitEditProfileHandler (evt) {
   evt.preventDefault();
@@ -125,11 +121,12 @@ function formSubmitAddCardHandler (evt) {
   evt.preventDefault();
   const placeName = placeNameInput.value;
   const placeImg = placeImgInput.value;
-  cardsContainer.prepend(createCard ({
+  const data = {
     name: placeName,
     link: placeImg,
     alt: placeName
-  }));
+  };
+  cardsContainer.prepend(createCard(data));
   closePopup(addCardPopup);
   addCardForm.reset();
 }
@@ -143,10 +140,10 @@ function createCard (card) {
   cardNodeImg.setAttribute("alt", card.alt);
   cardNodeImg.addEventListener("click", onCardImgClick);
   cardNode.querySelector(".card__capture").textContent = card.name;
-  cardNode.querySelector('.card__like-button').addEventListener('click', function(evt) {
-    evt.target.classList.toggle('card__like-button_active');
+  cardNode.querySelector(".card__like-button").addEventListener("click", function(evt) {
+    evt.target.classList.toggle("card__like-button_active");
   });
-  cardNode.querySelector('.card__delete-button').addEventListener('click', function(evt) {
+  cardNode.querySelector(".card__delete-button").addEventListener("click", function(evt) {
     evt.target.closest(".card").remove();
   });
   return cardNode;
@@ -154,12 +151,17 @@ function createCard (card) {
 
 //Close all popups with a close button
 
+function onClickCloseButton(evt) {
+  closePopup(evt.target.closest(".popup"));
+}
 
-
-popupForm.addEventListener('submit', formSubmitEditProfileHandler);
+popupEditForm.addEventListener("submit", formSubmitEditProfileHandler);
 editButton.addEventListener("click", onClickEditButton);
 addCardForm.addEventListener("submit", formSubmitAddCardHandler);
 addButton.addEventListener("click", onClickAddButton);
+closeButtons.forEach((button) => {
+  button.addEventListener("click", onClickCloseButton);
+})
 
 
 
