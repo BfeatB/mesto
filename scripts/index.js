@@ -116,17 +116,13 @@ function formSubmitAddCardHandler (evt) {
   evt.preventDefault();
   const placeName = placeNameInput.value;
   const placeImg = placeImgInput.value;
-  if (placeName.length === 0 || placeImg.length === 0) {
-    return;
-  }
   cardsContainer.prepend(createCard ({
     name: placeName,
     link: placeImg,
     alt: placeName
   }));
   closePopup("popupPlace");
-  placeNameInput.value = "";
-  placeImgInput.value = "";
+  addCardForm.reset();
 }
 
 //create cards

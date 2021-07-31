@@ -58,8 +58,8 @@
       <button type="button" class="popup__close js-close-popup" data-popupid="popupProfile"></button>
       <h3 class="popup__title">Редактировать профиль</h3>
       <form class=" popup__form" name="profile">
-        <input class="popup__input" type="text" name="name" id="popupTitle" placeholder="Ваше имя" value="">
-        <input class="popup__input" type="text" name="description" id="popupDescription" placeholder="Расскажите о себе" value="">
+        <input class="popup__input" type="text" name="name" id="popupTitle" placeholder="Ваше имя" value="" required>
+        <input class="popup__input" type="text" name="description" id="popupDescription" placeholder="Расскажите о себе" value="" required>
         <button class="popup__button button js-close-popup" type="submit" data-popupid="popupProfile">Сохранить</button>
       </form>
     </div>
@@ -72,8 +72,8 @@
     <button type="button" class="popup__close js-close-popup" data-popupid="popupPlace"></button>
     <h3 class="popup__title">Новое место</h3>
     <form class=" popup__form" name="profile">
-      <input class="popup__input" type="text" name="place" id="popupNamePlace" placeholder="Название места">
-      <input class="popup__input" type="url" name="url" id="popupUrl" placeholder="Ссылка на картинку">
+      <input class="popup__input" type="text" name="place" id="popupNamePlace" placeholder="Название места" required>
+      <input class="popup__input" type="url" name="url" id="popupUrl" placeholder="Ссылка на картинку" required>
       <button class="popup__button button js-close-popup" type="submit" data-popupid="popupPlace">Создать</button>
     </form>
   </div>
