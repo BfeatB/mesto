@@ -134,7 +134,7 @@ function formSubmitAddCardHandler (evt) {
 //Create cards
 
 function createCard (card) {
-  const cardNode = cardTemplate.content.querySelector(".card").cloneNode(true);
+  const cardNode = cardTemplate.content.firstElementChild.cloneNode(true);
   const cardNodeImg = cardNode.querySelector(".card__img");
   cardNodeImg.setAttribute("src", card.link);
   cardNodeImg.setAttribute("alt", card.alt);
