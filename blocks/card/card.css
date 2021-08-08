@@ -10,3 +10,7 @@
   flex-direction: column;
   overflow: hidden;
 }
+
+.card:hover {
+  cursor: pointer;
+}
