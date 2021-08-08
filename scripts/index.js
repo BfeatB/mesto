@@ -155,13 +155,28 @@ function onClickCloseButton(evt) {
   closePopup(evt.target.closest(".popup"));
 }
 
+//Close all popups with an esc button
+
+function onKeydown(evt) {
+  if (evt.key === "Escape") {
+    const openedPopup = document.querySelector(".popup_opened");
+    if (openedPopup) {
+      closePopup(openedPopup);
+    }
+  }
+};
+
+document.addEventListener("keydown", onKeydown);
+
+
+
 popupEditForm.addEventListener("submit", formSubmitEditProfileHandler);
 editButton.addEventListener("click", onClickEditButton);
 addCardForm.addEventListener("submit", formSubmitAddCardHandler);
 addButton.addEventListener("click", onClickAddButton);
 closeButtons.forEach((button) => {
   button.addEventListener("click", onClickCloseButton);
-})
+});
 
 
 
