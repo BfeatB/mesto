@@ -1,13 +1,3 @@
-const editButton = document.querySelector(".profile__edit-button");
-const editPopup = document.getElementById("popupProfile");
-
-const nameProfile = document.querySelector(".profile__name");
-const descriptionProfile = document.querySelector(".profile__description");
-
-const popupEditForm = document.querySelector(".popup__form");
-const nameInput = popupEditForm.querySelector("input[name='name']");
-const descriptionInput = popupEditForm.querySelector("input[name='description']");
-
 const initialCards = [
   {
     name: "Санкт-Петербург",
@@ -45,6 +35,20 @@ const initialCards = [
     alt: "Кот в Туле"
   },
 ];
+
+const popups = document.querySelectorAll(".popup");
+const popupContainers = document.querySelectorAll(".popup__container");
+const popupGalleryContainer = document.querySelector(".popup__gallery");
+
+const editButton = document.querySelector(".profile__edit-button");
+const editPopup = document.getElementById("popupProfile");
+
+const nameProfile = document.querySelector(".profile__name");
+const descriptionProfile = document.querySelector(".profile__description");
+
+const popupEditForm = document.querySelector(".popup__form");
+const nameInput = popupEditForm.querySelector("input[name='name']");
+const descriptionInput = popupEditForm.querySelector("input[name='description']");
 
 const cardTemplate = document.getElementById("cardTemplate");
 const cardsContainer = document.querySelector(".cards");
@@ -168,7 +172,23 @@ function onKeydown(evt) {
 
 document.addEventListener("keydown", onKeydown);
 
+// Stop Propagation function
 
+function onClickPopupContainer(evt) {
+  evt.stopPropagation();
+}
+
+//Close all popups with an click out of container.
+
+popups.forEach((popup) => {
+  popup.addEventListener("click", onClickCloseButton)
+});
+
+popupContainers.forEach((popupContainer) => {
+  popupContainer.addEventListener("click", onClickPopupContainer);
+});
+
+popupGalleryContainer.addEventListener("click", onClickPopupContainer);
 
 popupEditForm.addEventListener("submit", formSubmitEditProfileHandler);
 editButton.addEventListener("click", onClickEditButton);
