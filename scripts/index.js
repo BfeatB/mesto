@@ -41,7 +41,7 @@ const popupContainers = document.querySelectorAll(".popup__container");
 const popupGalleryContainer = document.querySelector(".popup__gallery");
 
 const editButton = document.querySelector(".profile__edit-button");
-const editPopup = document.getElementById("popupProfile");
+const editPopup = document.getElementById("popup-profile");
 
 const nameProfile = document.querySelector(".profile__name");
 const descriptionProfile = document.querySelector(".profile__description");
@@ -53,14 +53,14 @@ const descriptionInput = popupEditForm.querySelector("input[name='description']"
 const cardTemplate = document.getElementById("cardTemplate");
 const cardsContainer = document.querySelector(".cards");
 
-const addCardPopup = document.getElementById("popupPlace");
+const addCardPopup = document.getElementById("popup-place");
 const addButton = document.querySelector(".profile__add-button");
 const placeNameInput = addCardPopup.querySelector("input[name='place']");
 const placeImgInput = addCardPopup.querySelector("input[name='url']");
 const addCardForm = addCardPopup.querySelector(".popup__form");
 
 const card = cardsContainer.querySelector(".card");
-const galleryPopup = document.getElementById("popupGallery");
+const galleryPopup = document.getElementById("popup-gallery");
 const galleryImg = document.querySelector(".popup__img-gallery");
 const galleryCapture = document.querySelector(".popup__figcaption");
 const cardCapture = document.querySelector(".card__capture");
