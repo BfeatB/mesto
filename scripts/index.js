@@ -77,12 +77,15 @@ for (const card of initialCards) {
 
 function openPopup(popup) {
   popup.classList.add("popup_opened");
+  document.addEventListener("keydown", onKeydown);
 }
 
 //Close popups
 
 function closePopup(popup) {
   popup.classList.remove("popup_opened");
+  document.removeEventListener("keydown", onKeydown);
+
 }
 
 //Add data to the edit form and open the popup
@@ -169,8 +172,6 @@ function onKeydown(evt) {
     }
   }
 };
-
-document.addEventListener("keydown", onKeydown);
 
 // Stop Propagation function
 
