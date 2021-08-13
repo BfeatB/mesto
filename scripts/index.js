@@ -66,6 +66,7 @@ const galleryCapture = document.querySelector(".popup__figcaption");
 const cardCapture = document.querySelector(".card__capture");
 
 const closeButtons = document.querySelectorAll(".popup__close");
+const submitButton = addCardPopup.querySelector(".popup__button");
 
 //Load existing cards
 
@@ -100,6 +101,8 @@ function onClickEditButton() {
 
 function onClickAddButton() {
   openPopup(addCardPopup);
+  addCardForm.reset();
+  desabledButton();
 }
 
 //Open the gallery
@@ -172,6 +175,12 @@ function onKeydown(evt) {
     }
   }
 };
+
+//Disable button after closing
+function desabledButton() {
+  submitButton.classList.add("popup__button_type_disabled");
+  submitButton.setAttribute('disabled', 'disabled');
+}
 
 // Stop Propagation function
 
