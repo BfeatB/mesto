@@ -30,6 +30,9 @@ function setEventListeners(formElement, selectors) {
       toggleButtonState(inputList, buttonElement, selectors);
     });
   });
+  formElement.addEventListener('reset', () => {
+    toggleButtonState(inputList, buttonElement, selectors);
+  })
 };
 
 const enableValidation = (selectors) => {

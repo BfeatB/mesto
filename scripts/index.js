@@ -68,6 +68,17 @@ const cardCapture = document.querySelector(".card__capture");
 const closeButtons = document.querySelectorAll(".popup__close");
 const submitButton = addCardPopup.querySelector(".popup__button");
 
+//Upload values into inputs before enabling validation
+
+function setPopupProfile() {
+  nameInput.value = nameProfile.textContent;
+  descriptionInput.value = descriptionProfile.textContent;
+
+  const event = new Event('input');
+  descriptionInput.dispatchEvent(event);
+  nameInput.dispatchEvent(event);
+}
+
 //Load existing cards
 
 for (const card of initialCards) {
@@ -92,9 +103,8 @@ function closePopup(popup) {
 //Add data to the edit form and open the popup
 
 function onClickEditButton() {
-  nameInput.value = nameProfile.textContent;
-  descriptionInput.value = descriptionProfile.textContent;
   openPopup(editPopup);
+  setPopupProfile();
 }
 
 //Open add card popup
@@ -102,7 +112,6 @@ function onClickEditButton() {
 function onClickAddButton() {
   openPopup(addCardPopup);
   addCardForm.reset();
-  desabledButton();
 }
 
 //Open the gallery
@@ -176,12 +185,6 @@ function onKeydown(evt) {
   }
 };
 
-//Disable button after closing
-function desabledButton() {
-  submitButton.classList.add("popup__button_type_disabled");
-  submitButton.setAttribute('disabled', 'disabled');
-}
-
 // Stop Propagation function
 
 function onClickPopupContainer(evt) {
@@ -207,7 +210,4 @@ addButton.addEventListener("click", onClickAddButton);
 closeButtons.forEach((button) => {
   button.addEventListener("click", onClickCloseButton);
 });
-
-
-
-
+setPopupProfile();
