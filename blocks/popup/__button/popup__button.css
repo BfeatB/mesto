@@ -11,7 +11,7 @@
   border-radius: 2px;
 }
 
-.popup__button:hover {
+.popup__button:hover:not([disabled="disabled"]) {
   background-color: rgb(0, 0, 0, .8);
 }
 
