@@ -67,6 +67,7 @@ function closePopup(popup) {
 function onClickEditButton() {
   openPopup(editPopup);
   setPopupProfile();
+  setInitialFormState(addCardPopup, selectors);
 }
 
 //Open add card popup
@@ -74,6 +75,7 @@ function onClickEditButton() {
 function onClickAddButton() {
   openPopup(addCardPopup);
   addCardForm.reset();
+  setInitialFormState(addCardPopup, selectors);
 }
 
 //Open the gallery

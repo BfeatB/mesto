@@ -1,3 +1,12 @@
+const selectors = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__button',
+  inactiveButtonClass: 'popup__button_type_disabled',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__error-message_type_active'
+};
+
 function showInputError(formElement, inputElement, errorMessage, selectors) {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
   inputElement.classList.add(selectors.inputErrorClass);
@@ -35,7 +44,7 @@ function setEventListeners(formElement, selectors) {
   })
 };
 
-const enableValidation = (selectors) => {
+function enableValidation(selectors) {
   const formList = Array.from(document.querySelectorAll(selectors.formSelector));
   formList.forEach((formElement) => {
     formElement.addEventListener('submit', function (evt) {
@@ -45,15 +54,6 @@ const enableValidation = (selectors) => {
   });
 };
 
-enableValidation({
-  formSelector: '.popup__form',
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__button',
-  inactiveButtonClass: 'popup__button_type_disabled',
-  inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__error-message_type_active'
-});
-
 function hasInvalidInput(inputList) {
   return inputList.some((inputElement) => {
     return !inputElement.validity.valid;
@@ -62,10 +62,29 @@ function hasInvalidInput(inputList) {
 
 function toggleButtonState(inputList, buttonElement, selectors) {
   if (hasInvalidInput(inputList)) {
-    buttonElement.classList.add(selectors. inactiveButtonClass);
-    buttonElement.setAttribute('disabled', 'disabled');
+    disableButton(buttonElement, selectors);
   } else {
-    buttonElement.classList.remove(selectors. inactiveButtonClass);
-    buttonElement.removeAttribute('disabled');
+    enableButton(buttonElement, selectors);
   }
 }
+
+function disableButton(buttonElement, selectors) {
+  buttonElement.classList.add(selectors.inactiveButtonClass);
+  buttonElement.setAttribute('disabled', 'disabled');
+}
+
+function enableButton(buttonElement, selectors) {
+  buttonElement.classList.remove(selectors.inactiveButtonClass);
+  buttonElement.removeAttribute('disabled');
+}
+
+function setInitialFormState(popup, selectors) {
+  const inputList = Array.from(popup.querySelectorAll(selectors.inputSelector));
+  const submitButton = popup.querySelector(selectors.submitButtonSelector);
+  inputList.forEach(function (inputElement){
+    hideInputError(popup, inputElement, selectors)
+  })
+  disableButton(submitButton, selectors);
+}
+
+enableValidation(selectors);
