@@ -29,6 +29,14 @@ const cardCapture = document.querySelector(".card__capture");
 
 const closeButtons = document.querySelectorAll(".popup__close");
 const submitButton = addCardPopup.querySelector(".popup__button");
+const selectors = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__button',
+  inactiveButtonClass: 'popup__button_type_disabled',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__error-message_type_active'
+};
 
 //Upload values into inputs before enabling validation
 
@@ -67,7 +75,6 @@ function closePopup(popup) {
 function onClickEditButton() {
   openPopup(editPopup);
   setPopupProfile();
-  setInitialFormState(addCardPopup, selectors);
 }
 
 //Open add card popup
@@ -75,7 +82,7 @@ function onClickEditButton() {
 function onClickAddButton() {
   openPopup(addCardPopup);
   addCardForm.reset();
-  setInitialFormState(addCardPopup, selectors);
+  formValidator.setInitialFormState(addCardPopup);
 }
 
 //Open the gallery
@@ -163,3 +170,6 @@ closeButtons.forEach((button) => {
   button.addEventListener("click", onClickCloseButton);
 });
 setPopupProfile();
+
+const formValidator = new FormValidator(selectors);
+formValidator.enableValidation();
