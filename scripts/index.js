@@ -117,19 +117,7 @@ function formSubmitAddCardHandler (evt) {
 //Create cards
 
 function createCard (card) {
-  const cardNode = cardTemplate.content.firstElementChild.cloneNode(true);
-  const cardNodeImg = cardNode.querySelector(".card__img");
-  cardNodeImg.setAttribute("src", card.link);
-  cardNodeImg.setAttribute("alt", card.alt);
-  cardNodeImg.addEventListener("click", onCardImgClick);
-  cardNode.querySelector(".card__capture").textContent = card.name;
-  cardNode.querySelector(".card__like-button").addEventListener("click", function(evt) {
-    evt.target.classList.toggle("card__like-button_active");
-  });
-  cardNode.querySelector(".card__delete-button").addEventListener("click", function(evt) {
-    evt.target.closest(".card").remove();
-  });
-  return cardNode;
+  return (new Card(card,  onCardImgClick, '#cardTemplate')).createCardNode()
 }
 
 //Close all popups with a close button
