@@ -1,3 +1,7 @@
+import { Card } from "./Card.js";
+import { FormValidator } from "./FormValidator.js";
+import { initialCards } from "./initial-cards.js";
+
 const popups = document.querySelectorAll(".popup");
 const popupContainers = document.querySelectorAll(".popup__container");
 const popupGalleryContainer = document.querySelector(".popup__gallery");

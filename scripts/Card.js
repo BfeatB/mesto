@@ -1,4 +1,4 @@
-class Card {
+export class Card {
   constructor(card, onCardImgClick, templateSelector) {
     this.card = card;
     this.templateSelector = templateSelector;

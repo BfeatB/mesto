@@ -1,4 +1,4 @@
-class FormValidator {
+export class FormValidator {
   constructor(selectors) {
     this.selectors = selectors;
   }
