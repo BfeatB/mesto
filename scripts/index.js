@@ -128,7 +128,7 @@ function formSubmitAddCardHandler (evt) {
 //Create cards
 
 function createCard (card) {
-  return (new Card(card,  onCardImgClick, '#cardTemplate')).createCardNode()
+return (new Card(card,  onCardImgClick, '#cardTemplate')).generateCard();
 }
 
 //Close all popups with a close button
