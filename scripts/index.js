@@ -77,14 +77,12 @@ function onClickAddButton() {
 }
 
 //Open the gallery
+const popupGallery = new PopupWithImage("#popup-gallery");
 
 function onCardImgClick (evt) {
   const newSrc = evt.target.getAttribute("src");
   const newAlt = evt.target.getAttribute("alt");
-  galleryImg.setAttribute("src", newSrc);
-  galleryImg.setAttribute("alt", newAlt);
-  galleryCapture.textContent = newAlt;
-  openPopup(galleryPopup);
+  popupGallery.open({src: newSrc, alt: newAlt});
 }
 
 //Update user profile
