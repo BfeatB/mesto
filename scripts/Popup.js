@@ -25,6 +25,6 @@ class Popup {
     }
     
     setEventListeners() {
-        this.popupEl.querySelector(".popup__close").addEventListener("click", onClickCloseButton);
+        this.popupEl.querySelector(".popup__close").addEventListener("click", () => this.close());
     }
 }

@@ -42,6 +42,8 @@ const selectors = {
   errorClass: 'popup__error-message_type_active'
 };
 
+const Popup = newPopup
+
 //Upload values into inputs before enabling validation
 
 function setPopupProfile() {
@@ -114,12 +116,6 @@ function formSubmitAddCardHandler (evt) {
 
 function createCard (card) {
 return (new Card(card,  onCardImgClick, '#cardTemplate')).generateCard();
-}
-
-//Close all popups with a close button
-
-function onClickCloseButton(evt) {
-  close(evt.target.closest(".popup"));
 }
 
 // Stop Propagation function
