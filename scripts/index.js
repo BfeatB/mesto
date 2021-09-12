@@ -59,21 +59,6 @@ for (const card of initialCards) {
   cardsContainer.appendChild(createCard(card));
 }
 
-//Open popups
-
-function openPopup(popup) {
-  popup.classList.add("popup_opened");
-  document.addEventListener("keydown", onKeydown);
-}
-
-//Close popups
-
-function closePopup(popup) {
-  popup.classList.remove("popup_opened");
-  document.removeEventListener("keydown", onKeydown);
-
-}
-
 //Add data to the edit form and open the popup
 
 function onClickEditButton() {
@@ -134,19 +119,8 @@ return (new Card(card,  onCardImgClick, '#cardTemplate')).generateCard();
 //Close all popups with a close button
 
 function onClickCloseButton(evt) {
-  closePopup(evt.target.closest(".popup"));
+  close(evt.target.closest(".popup"));
 }
-
-//Close all popups with an esc button
-
-function onKeydown(evt) {
-  if (evt.key === "Escape") {
-    const openedPopup = document.querySelector(".popup_opened");
-    if (openedPopup) {
-      closePopup(openedPopup);
-    }
-  }
-};
 
 // Stop Propagation function
 
