@@ -4,6 +4,7 @@ import { Section } from "./Section.js";
 import { initialCards } from "./initial-cards.js";
 import { PopupWithForm } from "./PopupWithForm.js";
 import { PopupWithImage} from "./PopupWithImage.js";
+import { UserInfo } from "./UserInfo.js";
 
 const popupContainers = document.querySelectorAll(".popup__container");
 const popupGalleryContainer = document.querySelector(".popup__gallery");
@@ -73,11 +74,13 @@ popupGallery.setEventListeners();
 //Profile popup
 
 const profilePopup = new PopupWithForm ("#popup-profile", formSubmitEditProfileHandler);
-
+const userInfo = new UserInfo({
+  nameSelector: ".profile__name",
+  descriptionSelector: ".profile__description"
+})
 
 function formSubmitEditProfileHandler ({ name, description }) {
-  nameProfile.textContent = name;
-  descriptionProfile.textContent = description;
+  userInfo.setUserInfo({ name, description });
   profilePopup.close();
 }
 
