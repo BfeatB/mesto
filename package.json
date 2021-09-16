@@ -1,0 +1,19 @@
+{
+  "name": "mesto",
+  "version": "0.0.1",
+  "description": ">«Им овладело беспокойство, Охота к перемене мест.»",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BfeatB/mesto.git"
+  },
+  "author": "Karpova Valentina",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BfeatB/mesto/issues"
+  },
+  "homepage": "https://github.com/BfeatB/mesto#readme"
+}

@@ -1,8 +1,8 @@
-class Popup {
+export class Popup {
     constructor(selector) {
         this.selector = selector;
         this.popupEl = document.querySelector(selector);
-        this._handleEscClose = _handleEscClose;
+        this._handleEscClose = this._handleEscClose.bind(this);
     }
     
     open() {
@@ -17,11 +17,8 @@ class Popup {
 
     _handleEscClose(evt) {
         if (evt.key === "Escape") {
-            const openedPopup = this.popupEl.querySelector(".popup_opened");
-            if (openedPopup) {
-              close(openedPopup);
-            }
-          }
+              this.close();
+        }
     }
     
     setEventListeners() {
