@@ -1,6 +1,7 @@
 import { Card } from "./Card.js";
 import { FormValidator } from "./FormValidator.js";
 import { initialCards } from "./initial-cards.js";
+import { Section } from "./Section.js";
 
 const popups = document.querySelectorAll(".popup");
 const popupContainers = document.querySelectorAll(".popup__container");
@@ -42,8 +43,6 @@ const selectors = {
   errorClass: 'popup__error-message_type_active'
 };
 
-const Popup = newPopup
-
 //Upload values into inputs before enabling validation
 
 function setPopupProfile() {
@@ -55,11 +54,39 @@ function setPopupProfile() {
   nameInput.dispatchEvent(event);
 }
 
-//Load existing cards
+//Initial cards:
 
-for (const card of initialCards) {
-  cardsContainer.appendChild(createCard(card));
+function createCard (card) {
+  return (new Card(card,  onCardImgClick, '#cardTemplate')).generateCard();
+  }
+
+//Render initial cards: 
+
+const cardsSection = new Section ({
+  items: initialCards,
+  renderer: createCard
+}, ".cards");
+
+cardsSection.renderAll();
+
+//Render new card
+
+function formSubmitAddCardHandler (evt) {
+  evt.preventDefault();
+  const placeName = placeNameInput.value;
+  const placeImg = placeImgInput.value;
+  const data = {
+    name: placeName,
+    link: placeImg,
+    alt: placeName
+  };
+  cardsSection.addItem(createCard(data));
+  closePopup(addCardPopup);
+  addCardForm.reset();
 }
+
+
+
 
 //Add data to the edit form and open the popup
 
@@ -94,27 +121,6 @@ function formSubmitEditProfileHandler (evt) {
   closePopup(editPopup);
 }
 
-//Add a new card
-
-function formSubmitAddCardHandler (evt) {
-  evt.preventDefault();
-  const placeName = placeNameInput.value;
-  const placeImg = placeImgInput.value;
-  const data = {
-    name: placeName,
-    link: placeImg,
-    alt: placeName
-  };
-  cardsContainer.prepend(createCard(data));
-  closePopup(addCardPopup);
-  addCardForm.reset();
-}
-
-//Create cards
-
-function createCard (card) {
-return (new Card(card,  onCardImgClick, '#cardTemplate')).generateCard();
-}
 
 // Stop Propagation function
 

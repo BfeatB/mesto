@@ -1,4 +1,4 @@
-class Section {
+export class Section {
     constructor({items, renderer}, containerSelector) {
         this.items = items;
         this.renderer = renderer;
@@ -7,11 +7,11 @@ class Section {
 
     renderAll() {
         this.items.forEach(item => {
-            this.renderer(item);
-        })
+           this.containerEl.append(this.renderer(item));
+        });
     }
 
-    addItem() {
+    addItem(item) {
         this.containerEl.prepend(item);
     }
 }
