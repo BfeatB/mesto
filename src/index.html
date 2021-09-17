@@ -4,19 +4,18 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./pages/index.css">
   <title>Место</title>
 </head>
 <body class="page">
 
   <header class="header">
-   <a href="#"><img class="header__logo" src="./images/header__logo.svg" alt="логотип"></a>
+   <a href="#"><img class="header__logo" src="<%=require('./images/header__logo.svg')%>" alt="логотип"></a>
   </header>
 
   <main class="main">
 
     <section class="profile">
-      <img class="profile__avatar" src="./images/lampcat_avatar.jpg" alt="аватар">
+      <img class="profile__avatar" src="<%=require('./images/lampcat_avatar.jpg')%>" alt="аватар">
       <div class="profile__info">
         <div class="profile__main-info">
           <h1 class="profile__name">Кот-светильник</h1>
@@ -102,8 +101,6 @@
     </figure>
   </div>
 </div>
-
-<script type="module" src="./scripts/index.js"></script>
 
 </body>
 </html>

@@ -1,14 +1,14 @@
 export class Card {
-  constructor(card, onCardImgClick, templateSelector) {
+  constructor(card, handleCardClick, templateSelector) {
     this.card = card;
     this.templateSelector = templateSelector;
-    this.onCardImgClick = onCardImgClick;
+    this.handleCardClick = handleCardClick;
   }
 
   _setEventListeners() {
     const cardNodeImg = this.element.querySelector(".card__img");
 
-    cardNodeImg.addEventListener("click", this.onCardImgClick);
+    cardNodeImg.addEventListener("click", this.handleCardClick);
 
     this.element.querySelector(".card__like-button").addEventListener("click", this._onLikeButtonClick);
     this.element.querySelector(".card__delete-button").addEventListener("click", this._onDeleteButtonClick);

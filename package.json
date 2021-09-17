@@ -1,19 +1,38 @@
 {
   "name": "mesto",
   "version": "0.0.1",
-  "description": ">«Им овладело беспокойство, Охота к перемене мест.»",
+  "description": "learning project",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "rm -rf dist && webpack --mode production",
+    "dev": "webpack serve"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/BfeatB/mesto.git"
   },
-  "author": "Karpova Valentina",
+  "author": "Valentina Karpova",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/BfeatB/mesto/issues"
   },
-  "homepage": "https://github.com/BfeatB/mesto#readme"
+  "homepage": "https://github.com/BfeatB/mesto#readme",
+  "devDependencies": {
+    "@babel/core": "^7.15.5",
+    "@babel/preset-env": "^7.15.6",
+    "autoprefixer": "^10.3.4",
+    "babel-loader": "^8.2.2",
+    "clean-webpack-plugin": "^4.0.0",
+    "css-loader": "^6.2.0",
+    "cssnano": "^5.0.8",
+    "html-webpack-plugin": "^5.3.2",
+    "mini-css-extract-plugin": "^2.3.0",
+    "postcss-loader": "^6.1.1",
+    "webpack": "^5.53.0",
+    "webpack-cli": "^4.8.0",
+    "webpack-dev-server": "^4.2.1"
+  },
+  "dependencies": {
+    "core-js": "^3.17.3"
+  }
 }
