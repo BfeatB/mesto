@@ -119,13 +119,6 @@ function onClickAddButton() {
 
 addCardPopup.setEventListeners();
 
-
-// Stop Propagation function
-
-function onClickPopupContainer(evt) {
-  evt.stopPropagation();
-}
-
 popupContainers.forEach((popupContainer) => {
   popupContainer.addEventListener("click", onClickPopupContainer);
 });
