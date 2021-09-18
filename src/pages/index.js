@@ -119,10 +119,5 @@ function onClickAddButton() {
 
 addCardPopup.setEventListeners();
 
-popupContainers.forEach((popupContainer) => {
-  popupContainer.addEventListener("click", onClickPopupContainer);
-});
-
-popupGalleryContainer.addEventListener("click", onClickPopupContainer);
 editButton.addEventListener("click", onClickEditButton);
 addButton.addEventListener("click", onClickAddButton);
