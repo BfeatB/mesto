@@ -1,48 +1,3 @@
-import catlamp_SPetersburgh from "../images/catlamp_SPetersburgh.jpg";
-import lampcat_Moscow from "../images/lampcat_Moscow.jpg";
-import lampcat_tver from "../images/lampcat_tver.jpg";
-import lampcat_Yandex from "../images/lampcat_Yandex.jpg";
-import lampcat_Kmountain from "../images/lampcat_Kmountain.jpg";
-import catlamp_Tula from "../images/catlamp_Tula.jpg";
-
-export const initialCards = [
-  {
-    name: "Санкт-Петербург",
-    link: catlamp_SPetersburgh,
-    alt: "Кот в Петербурге"
-  },
-
-  {
-    name: "Москва",
-    link: lampcat_Moscow,
-    alt: "Кот в Москве"
-  },
-
-  {
-    name: "Тверь",
-    link: lampcat_tver,
-    alt: "Кот в Твери"
-  },
-
-  {
-    name: "Яндекс",
-    link: lampcat_Yandex,
-    alt: "Кот в Яндексе"
-  },
-
-  {
-    name: "Кудыкина гора",
-    link: lampcat_Kmountain,
-    alt: "Кот на Кудыкиной горе"
-  },
-
-  {
-    name: "Тула и памятник тульскому прянику",
-    link: catlamp_Tula,
-    alt: "Кот в Туле"
-  },
-];
-
 export const selectors = {
     formSelector: '.popup__form',
     inputSelector: '.popup__input',
@@ -51,3 +6,13 @@ export const selectors = {
     inputErrorClass: 'popup__input_type_error',
     errorClass: 'popup__error-message_type_active'
   };
+
+
+
+export const editButton = document.querySelector(".profile__edit-button");
+
+const popupEditForm = document.querySelector("form[name = 'profile']");
+export const nameInput = popupEditForm.querySelector("input[name='name']");
+export const descriptionInput = popupEditForm.querySelector("input[name='description']");
+
+export const addButton = document.querySelector(".profile__add-button");

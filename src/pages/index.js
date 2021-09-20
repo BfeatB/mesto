@@ -1,6 +1,6 @@
 import './index.css';
 
-import { initialCards } from "../utils/constants.js";
+import { initialCards } from "../utils/initialCards.js";
 import { selectors } from "../utils/constants.js";
 
 import { Card } from "../components/Card.js";
@@ -10,16 +10,7 @@ import { PopupWithForm } from "../components/PopupWithForm.js";
 import { PopupWithImage} from "../components/PopupWithImage.js";
 import { UserInfo } from "../components/UserInfo.js";
 
-const editButton = document.querySelector(".profile__edit-button");
-
-const nameProfile = document.querySelector(".profile__name");
-const descriptionProfile = document.querySelector(".profile__description");
-
-const popupEditForm = document.querySelector(".popup__form");
-const nameInput = popupEditForm.querySelector("input[name='name']");
-const descriptionInput = popupEditForm.querySelector("input[name='description']");
-
-const addButton = document.querySelector(".profile__add-button");
+import { editButton , nameInput, descriptionInput, addButton } from "../utils/constants.js";
 
 
 //Initial cards:
@@ -69,7 +60,6 @@ function onCardImgClick (evt) {
 popupGallery.setEventListeners();
 
 //Profile popup
-
 const profilePopup = new PopupWithForm ("#popup-profile", formSubmitEditProfileHandler);
 const userInfo = new UserInfo({
   nameSelector: ".profile__name",
@@ -85,28 +75,23 @@ profilePopup.setEventListeners();
 
 
 function setPopupProfile() {
-  nameInput.value = nameProfile.textContent;
-  descriptionInput.value = descriptionProfile.textContent;
-
-  const event = new Event('input');
-  descriptionInput.dispatchEvent(event);
-  nameInput.dispatchEvent(event);
+  const userData = userInfo.getUserInfo();
+  nameInput.value = userData.name;
+  descriptionInput.value = userData.description;
+  profileFormValidator.setInitialFormState();
 }
 
 //Add data to the edit form and open the popup
-
 function onClickEditButton() {
   profilePopup.open();
   setPopupProfile();
 }
 
 //Add cards popup
-
 const addCardPopup = new PopupWithForm ("#popup-place", formSubmitAddCardHandler);
 
 
 //Open add card popup
-
 function onClickAddButton() {
   addCardPopup.open();
   addCardFormValidator.setInitialFormState();
