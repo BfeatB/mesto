@@ -3,14 +3,14 @@ import { Popup } from "./Popup.js";
 export class PopupWithForm extends Popup {
     constructor(popupSelector,  onFormSubmit) {
         super(popupSelector);
-        this.onFormSubmit = onFormSubmit;
-        this.inputs = this._popupEl.querySelectorAll(".popup__input");
-        this.form = this._popupEl.querySelector(".popup__form");
+        this._onFormSubmit = onFormSubmit;
+        this._inputs = this._popupEl.querySelectorAll(".popup__input");
+        this._form = this._popupEl.querySelector(".popup__form");
     }
 
     _getInputValues() {
         const formInput = {};
-        this.inputs.forEach((input) => {
+        this._inputs.forEach((input) => {
             formInput[input.name] = input.value
         });
         return formInput;
@@ -18,14 +18,14 @@ export class PopupWithForm extends Popup {
 
     setEventListeners() {
         super.setEventListeners();
-        this.form.addEventListener("submit", (evt) => {
-            this.onFormSubmit(this._getInputValues());
+        this._form.addEventListener("submit", (evt) => {
+            this._onFormSubmit(this._getInputValues());
             evt.preventDefault();
         });
     }
 
     close() {
         super.close();
-        this.form.reset();
+        this._form.reset();
     }
 }
