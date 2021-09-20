@@ -7,8 +7,8 @@ export class PopupWithImage extends Popup {
 
     open({src, alt}) {
         super.open();
-        const popupImg = this.popupEl.querySelector(".popup__img-gallery");
-        const popupCaption = this.popupEl.querySelector(".popup__figcaption");
+        const popupImg = this._popupEl.querySelector(".popup__img-gallery");
+        const popupCaption = this._popupEl.querySelector(".popup__figcaption");
 
         popupImg.setAttribute("src", src);
         popupImg.setAttribute("alt", alt);

@@ -1,15 +1,14 @@
 import './index.css';
 
+import { initialCards } from "../utils/constants.js";
+import { selectors } from "../utils/constants.js";
+
 import { Card } from "../components/Card.js";
 import { FormValidator } from "../components/FormValidator.js";
 import { Section } from "../components/Section.js";
-import { initialCards } from "../components/initial-cards.js";
 import { PopupWithForm } from "../components/PopupWithForm.js";
 import { PopupWithImage} from "../components/PopupWithImage.js";
 import { UserInfo } from "../components/UserInfo.js";
-
-const popupContainers = document.querySelectorAll(".popup__container");
-const popupGalleryContainer = document.querySelector(".popup__gallery");
 
 const editButton = document.querySelector(".profile__edit-button");
 
@@ -22,14 +21,6 @@ const descriptionInput = popupEditForm.querySelector("input[name='description']"
 
 const addButton = document.querySelector(".profile__add-button");
 
-const selectors = {
-  formSelector: '.popup__form',
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__button',
-  inactiveButtonClass: 'popup__button_type_disabled',
-  inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__error-message_type_active'
-};
 
 //Initial cards:
 
@@ -59,8 +50,12 @@ function formSubmitAddCardHandler ({ place, url }) {
 }
 
 //Validation 
-const formValidator = new FormValidator(selectors);
-formValidator.enableValidation();
+const profileFormValidator = new FormValidator(selectors, "form[name = 'profile']");
+profileFormValidator.enableValidation();
+
+
+const addCardFormValidator = new FormValidator(selectors, "form[name = 'addCard']");
+addCardFormValidator.enableValidation();
 
 //Open the gallery
 const popupGallery = new PopupWithImage("#popup-gallery");
@@ -114,7 +109,7 @@ const addCardPopup = new PopupWithForm ("#popup-place", formSubmitAddCardHandler
 
 function onClickAddButton() {
   addCardPopup.open();
-  formValidator.setInitialFormState(addCardPopup.popupEl);
+  addCardFormValidator.setInitialFormState();
 }
 
 addCardPopup.setEventListeners();
