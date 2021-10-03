@@ -37,6 +37,7 @@ export class Card {
     cardNodeImg.setAttribute("src", this._card.link);
     cardNodeImg.setAttribute("alt", this._card.name);
     this.element.querySelector(".card__capture").textContent = this._card.name;
+    this.element.querySelector(".card__like-counter").textContent = this._card.likes.length;
 
     this._setEventListeners();
 

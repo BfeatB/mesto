@@ -8,4 +8,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 220px;
+  grid-column: 1;
+  grid-row: 1/2;
+  padding-top: 10px;
 }
