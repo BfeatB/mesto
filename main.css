@@ -17,11 +17,13 @@
 .cards{display:grid;gap:20px 16px;grid-template-columns:repeat(3,1fr);list-style:none;margin:0;padding:0}@media screen and (max-width:910px){.cards{grid-template-columns:repeat(2,1fr);margin:0 auto;max-width:580px}}@media screen and (max-width:630px){.cards{grid-template-columns:1fr;max-width:282px}}
 .card{background-color:#fff;border-bottom-left-radius:10px;border-bottom-right-radius:10px;border-top-left-radius:12px;border-top-right-radius:12px;display:flex;flex-direction:column;max-width:282px;overflow:hidden;position:relative}.card:hover{cursor:pointer}
 .card__img{background-color:#000;border-top-left-radius:10px;border-top-right-radius:10px;height:282px;-o-object-fit:cover;object-fit:cover;width:282px}
-.card__items{display:flex;justify-content:space-between;margin:22px 20px 25px 18px}
-.card__capture{color:#000;font-size:24px;font-weight:900;line-height:29px;margin:0;max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.card__like-button{background-color:unset;background-image:url(87ed371465c7a6a1cd01.svg);background-position:50%;background-repeat:no-repeat;border:none;box-sizing:border-box;height:22px;margin-top:4px;padding:0;width:22px}
+.card__items{align-items:start;display:grid;grid-template-columns:220px 23px;grid-template-rows:14px 24px;justify-items:start;margin:17px 20px 25px 18px}
+.card__capture{color:#000;font-size:24px;font-weight:900;grid-column:1;grid-row:1/2;line-height:29px;margin:0;max-width:220px;overflow:hidden;padding-top:10px;text-overflow:ellipsis;white-space:nowrap}
+.card__like-button{background-color:unset;background-image:url(87ed371465c7a6a1cd01.svg);background-position:50%;background-repeat:no-repeat;border:none;box-sizing:border-box;grid-column:2;grid-row:1;height:22px;margin-top:4px;padding:0;width:22px}
 .card__like-button_active{background-image:url(fe17a515669479b1e649.svg)}
-.card__delete-button{background-color:transparent;background-image:url(a274c87c0f6b553b47ad.svg);background-size:contain;border:none;cursor:pointer;height:20px;order:1;padding:0;position:absolute;right:15px;top:17px;width:18px}
+.card__delete-button{background-color:transparent;background-image:url(a274c87c0f6b553b47ad.svg);background-size:contain;border:none;cursor:pointer;display:none;height:20px;order:1;padding:0;position:absolute;right:15px;top:17px;width:18px}
+.card__delete-button_visible{display:flex}
+.card__like-counter{color:#000;font-size:13px;grid-column:2;grid-row:2;line-height:16px;padding-top:19px;place-self:center;text-align:center}
 .footer{margin:67px 0 53px;max-width:880px;min-width:300px}@media screen and (max-width:910px){.footer{margin:51px 0 30px}}
 .footer__copyright{color:#545454;font-size:18px;line-height:22px;margin:0}@media screen and (max-width:910px){.footer__copyright{font-size:14px;line-height:17px;margin-left:27px}}@media screen and (max-width:480px){.footer__copyright{margin-left:19px}}
 .popup{align-items:center;background-color:rgb(0,0,0,.5);bottom:0;display:flex;justify-content:center;left:0;opacity:0;position:fixed;right:0;top:0;transition:all .5s ease-in;visibility:hidden}
