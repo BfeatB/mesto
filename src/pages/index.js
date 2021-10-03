@@ -12,6 +12,8 @@ import { UserInfo } from "../components/UserInfo.js";
 
 import { editButton , nameInput, descriptionInput, addButton } from "../utils/constants.js";
 
+import api from "../components/Api.js"
+
 
 //Initial cards:
 
@@ -63,7 +65,8 @@ popupGallery.setEventListeners();
 const profilePopup = new PopupWithForm ("#popup-profile", formSubmitEditProfileHandler);
 const userInfo = new UserInfo({
   nameSelector: ".profile__name",
-  descriptionSelector: ".profile__description"
+  descriptionSelector: ".profile__description",
+  avatarSelector: ".profile__avatar"
 })
 
 function formSubmitEditProfileHandler ({ name, description }) {
@@ -96,6 +99,11 @@ function onClickAddButton() {
   addCardPopup.open();
   addCardFormValidator.setInitialFormState();
 }
+
+api.getUserInfo()
+.then((data) => {
+  userInfo.setUserInfo(data);
+})
 
 addCardPopup.setEventListeners();
 
