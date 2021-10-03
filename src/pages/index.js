@@ -23,12 +23,16 @@ function createCard (card) {
 
 //Render initial cards: 
 
-const cardsSection = new Section ({
-  items: initialCards,
-  renderer: createCard
-}, ".cards");
+api.getInitialCards()
+.then((data) => {
+  const cardsSection = new Section ({
+    items: data,
+    renderer: createCard
+  }, ".cards");
+  
+  cardsSection.renderAll();
+})
 
-cardsSection.renderAll();
 
 //Render a new card
 

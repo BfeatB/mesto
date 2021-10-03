@@ -21,7 +21,7 @@ class Api {
     }
   
     getInitialCards() {
-      // ...
+      return this._fetch('/cards');
     }
   
     // другие методы работы с API
