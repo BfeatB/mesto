@@ -19,7 +19,7 @@ import api from "../components/Api.js"
 
 function createCard (card) {
   return (new Card(card,  onCardImgClick, '#cardTemplate')).generateCard();
-  }
+}
 
 //Render initial cards: 
 
@@ -31,7 +31,7 @@ api.getInitialCards()
   }, ".cards");
   
   cardsSection.renderAll();
-})
+});
 
 
 //Render a new card
