@@ -23,13 +23,14 @@ function createCard (card) {
 
 //Render initial cards: 
 
-api.getInitialCards()
-  .then((data) => {
+Promise.all([api.getInitialCards(), api.getUserInfo()])
+  .then(([cards, user]) => {
     const cardsSection = new Section ({
-      items: data,
+      items: cards,
       renderer: createCard
     }, ".cards");
     
+    userInfo.setUserInfo(user);
     cardsSection.renderAll();
   });
 
@@ -111,11 +112,6 @@ function onClickAddButton() {
   addCardPopup.open();
   addCardFormValidator.setInitialFormState();
 }
-
-api.getUserInfo()
-  .then((data) => {
-    userInfo.setUserInfo(data);
-  });
 
 addCardPopup.setEventListeners();
 
