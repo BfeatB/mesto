@@ -1,6 +1,5 @@
 import './index.css';
 
-import { initialCards } from "../utils/initialCards.js";
 import { selectors } from "../utils/constants.js";
 
 import { Card } from "../components/Card.js";
@@ -18,7 +17,7 @@ import api from "../components/Api.js"
 //Initial cards:
 
 function createCard (card) {
-  return (new Card(card,  onCardImgClick, '#cardTemplate')).generateCard();
+  return (new Card(card,  onCardImgClick, '#cardTemplate', userInfo.getUserId())).generateCard();
 }
 
 //Render initial cards: 
@@ -31,6 +30,7 @@ Promise.all([api.getInitialCards(), api.getUserInfo()])
     }, ".cards");
     
     userInfo.setUserInfo(user);
+    userInfo.setUserId(user._id);
     cardsSection.renderAll();
   });
 

@@ -1,8 +1,9 @@
 export class Card {
-  constructor(card, handleCardClick, templateSelector) {
+  constructor(card, handleCardClick, templateSelector, userId) {
     this._card = card;
     this._templateSelector = templateSelector;
     this._handleCardClick = handleCardClick;
+    this._userId = userId;
   }
 
   _setEventListeners() {
@@ -38,6 +39,10 @@ export class Card {
     cardNodeImg.setAttribute("alt", this._card.name);
     this.element.querySelector(".card__capture").textContent = this._card.name;
     this.element.querySelector(".card__like-counter").textContent = this._card.likes.length;
+
+    if(this._card.owner._id === this._userId) {
+      this.element.querySelector(".card__delete-button").classList.add("card__delete-button_visible");
+    }
 
     this._setEventListeners();
 

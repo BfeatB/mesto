@@ -18,4 +18,12 @@ export class UserInfo {
         this.about.textContent = about;
         this.avatar.setAttribute('src', avatar);
     }
+
+    getUserId() {
+        return this.userId;
+    }
+
+    setUserId(userId) {
+        this.userId = userId;
+    }
 }
