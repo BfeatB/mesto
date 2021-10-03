@@ -24,14 +24,14 @@ function createCard (card) {
 //Render initial cards: 
 
 api.getInitialCards()
-.then((data) => {
-  const cardsSection = new Section ({
-    items: data,
-    renderer: createCard
-  }, ".cards");
-  
-  cardsSection.renderAll();
-});
+  .then((data) => {
+    const cardsSection = new Section ({
+      items: data,
+      renderer: createCard
+    }, ".cards");
+    
+    cardsSection.renderAll();
+  });
 
 
 //Render a new card
@@ -105,9 +105,9 @@ function onClickAddButton() {
 }
 
 api.getUserInfo()
-.then((data) => {
-  userInfo.setUserInfo(data);
-})
+  .then((data) => {
+    userInfo.setUserInfo(data);
+  });
 
 addCardPopup.setEventListeners();
 
