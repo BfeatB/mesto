@@ -13,6 +13,6 @@ export const editButton = document.querySelector(".profile__edit-button");
 
 const popupEditForm = document.querySelector("form[name = 'profile']");
 export const nameInput = popupEditForm.querySelector("input[name='name']");
-export const descriptionInput = popupEditForm.querySelector("input[name='description']");
+export const descriptionInput = popupEditForm.querySelector("input[name='about']");
 
 export const addButton = document.querySelector(".profile__add-button");

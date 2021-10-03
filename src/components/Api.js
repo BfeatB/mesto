@@ -23,6 +23,21 @@ class Api {
     getInitialCards() {
       return this._fetch('/cards');
     }
+
+    updateUserInfo(data) {
+        return this._fetch('/users/me', {
+            method: 'PATCH',
+            body: JSON.stringify(data)
+        });
+    }
+
+    addNewCard(data) {
+        return this._fetch('/cards', {
+            method: 'POST',
+            body: JSON.stringify(data)
+        });
+        
+    }
   
     // другие методы работы с API
   }

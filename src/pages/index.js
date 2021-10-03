@@ -39,11 +39,14 @@ api.getInitialCards()
 function formSubmitAddCardHandler ({ place, url }) {
   const data = {
     name: place,
-    link: url,
-    alt: place
+    link: url
   };
-  cardsSection.addItem(createCard(data));
-  addCardPopup.close();
+  api.addNewCard(data)
+    .then((card) => {
+      const cardsSection = new Section ({}, ".cards");
+      cardsSection.addItem(createCard(card));
+      addCardPopup.close();
+    })
 }
 
 //Validation 
@@ -69,12 +72,17 @@ popupGallery.setEventListeners();
 const profilePopup = new PopupWithForm ("#popup-profile", formSubmitEditProfileHandler);
 const userInfo = new UserInfo({
   nameSelector: ".profile__name",
-  descriptionSelector: ".profile__description",
+  aboutSelector: ".profile__description",
   avatarSelector: ".profile__avatar"
 })
 
-function formSubmitEditProfileHandler ({ name, description }) {
-  userInfo.setUserInfo({ name, description });
+function formSubmitEditProfileHandler ({ name, about }) {
+  userInfo.setUserInfo({ 
+    name, 
+    about, 
+    avatar: userInfo.getUserInfo().avatar
+  });
+
   profilePopup.close();
 }
 
@@ -84,7 +92,7 @@ profilePopup.setEventListeners();
 function setPopupProfile() {
   const userData = userInfo.getUserInfo();
   nameInput.value = userData.name;
-  descriptionInput.value = userData.description;
+  descriptionInput.value = userData.about;
   profileFormValidator.setInitialFormState();
 }
 
