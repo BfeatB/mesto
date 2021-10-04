@@ -1,9 +1,10 @@
 export class Card {
-  constructor(card, handleCardClick, templateSelector, userId) {
+  constructor(card, handleCardClick, templateSelector, userId, onDeleteCard) {
     this._card = card;
     this._templateSelector = templateSelector;
     this._handleCardClick = handleCardClick;
     this._userId = userId;
+    this._onDeleteCard = onDeleteCard;
   }
 
   _setEventListeners() {
@@ -12,7 +13,7 @@ export class Card {
     cardNodeImg.addEventListener("click", this._handleCardClick);
 
     this.element.querySelector(".card__like-button").addEventListener("click", this._onLikeButtonClick);
-    this.element.querySelector(".card__delete-button").addEventListener("click", this._onDeleteButtonClick);
+    this.element.querySelector(".card__delete-button").addEventListener("click", this._onDeleteButtonClick.bind(this));
 
   }
 
@@ -21,7 +22,9 @@ export class Card {
   }
 
   _onDeleteButtonClick(evt){
-    evt.target.closest(".card").remove();
+    this._onDeleteCard(this._card._id, () => {
+      evt.target.closest(".card").remove();
+    });
   }
 
   _getTemplate () {

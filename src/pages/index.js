@@ -12,12 +12,18 @@ import { UserInfo } from "../components/UserInfo.js";
 import { editButton , nameInput, descriptionInput, addButton } from "../utils/constants.js";
 
 import api from "../components/Api.js"
+import { PopupWithConfirmation } from '../components/PopupWithConfirmation';
 
 
 //Initial cards:
 
 function createCard (card) {
-  return (new Card(card,  onCardImgClick, '#cardTemplate', userInfo.getUserId())).generateCard();
+  return (new Card(card,
+      onCardImgClick,
+      '#cardTemplate',
+      userInfo.getUserId(),
+      onDeleteCard
+      )).generateCard();
 }
 
 //Render initial cards: 
@@ -106,11 +112,28 @@ function onClickEditButton() {
 //Add cards popup
 const addCardPopup = new PopupWithForm ("#popup-place", formSubmitAddCardHandler);
 
-
 //Open add card popup
 function onClickAddButton() {
   addCardPopup.open();
   addCardFormValidator.setInitialFormState();
+}
+
+//Confirmation popup
+const deleteConfirmatonPopup = new PopupWithConfirmation ("#popup-confirmation", formSubmitDeleteConfirmationHAndler);
+deleteConfirmatonPopup.setEventListeners();
+
+//Delete card function
+function formSubmitDeleteConfirmationHAndler(cardId, deleteCard) {
+  api.deleteCard(cardId)
+    .then(() => {
+      deleteCard();
+      deleteConfirmatonPopup.close();
+    })
+}
+
+//Function for opening popup
+function onDeleteCard(cardId, deleteCard) {
+  deleteConfirmatonPopup.open(cardId, deleteCard);
 }
 
 addCardPopup.setEventListeners();

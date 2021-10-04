@@ -38,6 +38,12 @@ class Api {
         });
         
     }
+
+    deleteCard(cardId) {
+        return this._fetch(`/cards/${cardId}`, {
+            method: 'DELETE'
+        });
+    }
   
     // другие методы работы с API
   }
