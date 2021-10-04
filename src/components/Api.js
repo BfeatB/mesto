@@ -44,6 +44,18 @@ class Api {
             method: 'DELETE'
         });
     }
+
+    setLike(cardId) {
+        return this._fetch(`/cards/likes/${cardId}`, {
+            method: 'PUT'
+        });
+    }
+
+    deleteLike(cardId) {
+        return this._fetch(`/cards/likes/${cardId}`, {
+            method: 'DELETE'
+        });
+    }
   
     // другие методы работы с API
   }

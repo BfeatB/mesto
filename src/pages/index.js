@@ -18,12 +18,34 @@ import { PopupWithConfirmation } from '../components/PopupWithConfirmation';
 //Initial cards:
 
 function createCard (card) {
-  return (new Card(card,
-      onCardImgClick,
-      '#cardTemplate',
-      userInfo.getUserId(),
-      onDeleteCard
-      )).generateCard();
+  return new Card(
+    card,
+    '#cardTemplate',
+    userInfo.getUserId(),
+    {
+      handleCardClick: (evt) => {
+        const newSrc = evt.target.getAttribute("src");
+        const newAlt = evt.target.getAttribute("alt");
+        popupGallery.open({src: newSrc, alt: newAlt});
+      },
+      handleCardDelete: (cardId, deleteCard) => {
+        deleteConfirmatonPopup.open(cardId, deleteCard);
+      },
+      handleCardLike: (cardId, renderLike, isCardLiked) => {
+        if (isCardLiked) {
+          api.deleteLike(cardId)
+            .then((data) => {
+              renderLike(data);
+            })
+        } else {
+          api.setLike(cardId)
+            .then((data) => {
+              renderLike(data);
+            })
+        }
+      }
+    }
+  ).generateCard();
 }
 
 //Render initial cards: 
@@ -66,13 +88,6 @@ addCardFormValidator.enableValidation();
 
 //Open the gallery
 const popupGallery = new PopupWithImage("#popup-gallery");
-
-function onCardImgClick (evt) {
-  const newSrc = evt.target.getAttribute("src");
-  const newAlt = evt.target.getAttribute("alt");
-  popupGallery.open({src: newSrc, alt: newAlt});
-}
-
 popupGallery.setEventListeners();
 
 //Profile popup
@@ -129,11 +144,6 @@ function formSubmitDeleteConfirmationHAndler(cardId, deleteCard) {
       deleteCard();
       deleteConfirmatonPopup.close();
     })
-}
-
-//Function for opening popup
-function onDeleteCard(cardId, deleteCard) {
-  deleteConfirmatonPopup.open(cardId, deleteCard);
 }
 
 addCardPopup.setEventListeners();
