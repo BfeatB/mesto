@@ -1,10 +1,8 @@
-import { Popup } from "./Popup.js";
+import { PopupWithForm } from "./PopupWithForm.js";
 
-export class PopupWithConfirmation extends Popup {
+export class PopupWithConfirmation extends PopupWithForm {
     constructor(selector, onFormSubmit) {
-        super(selector);
-        this._onFormSubmit = onFormSubmit;
-        this._form = this._popupEl.querySelector(".popup__form")
+        super(selector, onFormSubmit);
     }
 
     open(cardId, afterFormSubmit) {

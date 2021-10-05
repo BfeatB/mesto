@@ -70,11 +70,16 @@ function formSubmitAddCardHandler ({ place, url }) {
     name: place,
     link: url
   };
+  addCardPopup.disableSubmit();
   api.addNewCard(data)
     .then((card) => {
       const cardsSection = new Section ({}, ".cards");
       cardsSection.addItem(createCard(card));
       addCardPopup.close();
+    })
+    .catch(handleError)
+    .finally(()=> {
+      addCardPopup.enableSubmit();
     })
 }
 
@@ -102,10 +107,15 @@ const userInfo = new UserInfo({
 })
 
 function formSubmitEditProfileHandler (data) {
+  profilePopup.disableSubmit();
   api.updateUserInfo(data)
     .then((data) => {
       userInfo.setUserInfo(data);
       profilePopup.close();
+    })
+    .catch(handleError)
+    .finally(()=> {
+      profilePopup.enableSubmit();
     })
 }
 
@@ -140,10 +150,15 @@ deleteConfirmatonPopup.setEventListeners();
 
 //Delete card function
 function formSubmitDeleteConfirmationHandler(cardId, deleteCard) {
+  deleteConfirmatonPopup.disableSubmit();
   api.deleteCard(cardId)
     .then(() => {
       deleteCard();
       deleteConfirmatonPopup.close();
+    })
+    .catch(handleError)
+    .finally(()=> {
+      deleteConfirmatonPopup.enableSubmit();
     })
 }
 
@@ -152,15 +167,24 @@ changeAvatarPopup.setEventListeners();
 
 //Change avatar function
 function formSubmitChangeAvatarHandler(data) {
+  changeAvatarPopup.disableSubmit();
   api.changeAvatar(data)
     .then(() => {
       userInfo.setUserAvatar(data.avatar);
       changeAvatarPopup.close();
     })
+    .catch(handleError)
+    .finally(()=> {
+      changeAvatarPopup.enableSubmit();
+    })
 }
 
 function onClickChangeAvatarButton() {
   changeAvatarPopup.open();
+}
+
+function handleError(err) {
+  console.error(err);
 }
 
 addCardPopup.setEventListeners();
