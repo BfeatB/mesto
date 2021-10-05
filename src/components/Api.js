@@ -35,8 +35,7 @@ class Api {
         return this._fetch('/cards', {
             method: 'POST',
             body: JSON.stringify(data)
-        });
-        
+        });  
     }
 
     deleteCard(cardId) {

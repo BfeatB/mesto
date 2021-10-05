@@ -101,14 +101,12 @@ const userInfo = new UserInfo({
   avatarSelector: ".profile__avatar"
 })
 
-function formSubmitEditProfileHandler ({ name, about }) {
-  userInfo.setUserInfo({ 
-    name, 
-    about, 
-    avatar: userInfo.getUserInfo().avatar
-  });
-
-  profilePopup.close();
+function formSubmitEditProfileHandler (data) {
+  api.updateUserInfo(data)
+    .then((data) => {
+      userInfo.setUserInfo(data);
+      profilePopup.close();
+    })
 }
 
 profilePopup.setEventListeners();
