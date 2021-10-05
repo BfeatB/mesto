@@ -56,6 +56,13 @@ class Api {
             method: 'DELETE'
         });
     }
+
+    changeAvatar(data) {
+        return this._fetch('/users/me/avatar', {
+            method: 'PATCH',
+            body: JSON.stringify(data)
+        });
+    }
   
     // другие методы работы с API
   }

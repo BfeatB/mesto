@@ -16,3 +16,4 @@ export const nameInput = popupEditForm.querySelector("input[name='name']");
 export const descriptionInput = popupEditForm.querySelector("input[name='about']");
 
 export const addButton = document.querySelector(".profile__add-button");
+export const changeAvatarButton = document.querySelector(".profile__img-wrapper");

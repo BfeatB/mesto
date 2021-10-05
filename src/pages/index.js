@@ -9,7 +9,7 @@ import { PopupWithForm } from "../components/PopupWithForm.js";
 import { PopupWithImage} from "../components/PopupWithImage.js";
 import { UserInfo } from "../components/UserInfo.js";
 
-import { editButton , nameInput, descriptionInput, addButton } from "../utils/constants.js";
+import { editButton , nameInput, descriptionInput, addButton, changeAvatarButton } from "../utils/constants.js";
 
 import api from "../components/Api.js"
 import { PopupWithConfirmation } from '../components/PopupWithConfirmation';
@@ -86,6 +86,9 @@ profileFormValidator.enableValidation();
 const addCardFormValidator = new FormValidator(selectors, "form[name = 'addCard']");
 addCardFormValidator.enableValidation();
 
+const changeAvatarFormValidator = new FormValidator(selectors, "form[name = 'changeAvatar']");
+changeAvatarFormValidator.enableValidation();
+
 //Open the gallery
 const popupGallery = new PopupWithImage("#popup-gallery");
 popupGallery.setEventListeners();
@@ -134,11 +137,11 @@ function onClickAddButton() {
 }
 
 //Confirmation popup
-const deleteConfirmatonPopup = new PopupWithConfirmation ("#popup-confirmation", formSubmitDeleteConfirmationHAndler);
+const deleteConfirmatonPopup = new PopupWithConfirmation ("#popup-confirmation", formSubmitDeleteConfirmationHandler);
 deleteConfirmatonPopup.setEventListeners();
 
 //Delete card function
-function formSubmitDeleteConfirmationHAndler(cardId, deleteCard) {
+function formSubmitDeleteConfirmationHandler(cardId, deleteCard) {
   api.deleteCard(cardId)
     .then(() => {
       deleteCard();
@@ -146,7 +149,24 @@ function formSubmitDeleteConfirmationHAndler(cardId, deleteCard) {
     })
 }
 
+const changeAvatarPopup = new PopupWithForm("#popup-change-avatar", formSubmitChangeAvatarHandler);
+changeAvatarPopup.setEventListeners();
+
+//Change avatar function
+function formSubmitChangeAvatarHandler(data) {
+  api.changeAvatar(data)
+    .then(() => {
+      userInfo.setUserAvatar(data.avatar);
+      changeAvatarPopup.close();
+    })
+}
+
+function onClickChangeAvatarButton() {
+  changeAvatarPopup.open();
+}
+
 addCardPopup.setEventListeners();
 
+changeAvatarButton.addEventListener("click", onClickChangeAvatarButton);
 editButton.addEventListener("click", onClickEditButton);
 addButton.addEventListener("click", onClickAddButton);

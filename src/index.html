@@ -117,6 +117,21 @@
   </div>
 </div>
 
+<!--Change avatar popup-->
+
+<div class="popup" id="popup-change-avatar">
+  <div class="popup__container">
+    <button type="button" class="popup__close" data-popupid="popup-change-avatar"></button>
+    <h3 class="popup__title"> Обновить аватар</h3>
+    <form class=" popup__form" name="changeAvatar">
+      <label>
+        <input class="popup__input" type="text" name="avatar" id="popup-change-avatar-url" placeholder="Ссылка на картинку" required>
+        <span class="popup__error-message popup-change-avatar-url-error"></span>
+      </label>
+      <button class="popup__button button" type="submit" data-popupid="popup-change-avatar">Сохранить</button>
+    </form>
+  </div>
+</div>
 
 </body>
 </html>
