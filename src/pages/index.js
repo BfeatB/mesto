@@ -181,6 +181,7 @@ function formSubmitChangeAvatarHandler(data) {
 
 function onClickChangeAvatarButton() {
   changeAvatarPopup.open();
+  changeAvatarFormValidator.setInitialFormState();
 }
 
 function handleError(err) {
