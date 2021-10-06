@@ -64,7 +64,8 @@ Promise.all([api.getInitialCards(), api.getUserInfo()])
     userInfo.setUserInfo(user);
     userInfo.render();
     cardsSection.renderAll(cards);
-  });
+  })
+  .catch(handleError);
 
 
 //Render a new card
