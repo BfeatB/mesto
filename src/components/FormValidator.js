@@ -39,7 +39,7 @@ export class FormValidator {
       });
     });
     this._form.addEventListener('reset', () => {
-      this._toggleButtonState();
+      this_disableButton();
     })
   };
 
