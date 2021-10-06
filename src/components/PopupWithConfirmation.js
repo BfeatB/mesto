@@ -2,7 +2,8 @@ import { PopupWithForm } from "./PopupWithForm.js";
 
 export class PopupWithConfirmation extends PopupWithForm {
     constructor(selector, onFormSubmit) {
-        super(selector, onFormSubmit);
+        super(selector, () => {});
+        this._onConfirmationFormSubmit = onFormSubmit;
     }
 
     open(cardId, afterFormSubmit) {
@@ -15,7 +16,7 @@ export class PopupWithConfirmation extends PopupWithForm {
         super.setEventListeners();
         this._form.addEventListener("submit", (evt) => {
             evt.preventDefault();
-            this._onFormSubmit(this._cardId, this._afterFormSubmit);
+            this._onConfirmationFormSubmit(this._cardId, this._afterFormSubmit);
         })
     }
 }
