@@ -18,10 +18,12 @@ import { PopupWithConfirmation } from '../components/PopupWithConfirmation';
 //Initial cards:
 
 function createCard (card) {
+  const userId = userInfo.getUserInfo()._id;
+
   return new Card(
     card,
     '#cardTemplate',
-    userInfo.getUserId(),
+    userId,
     {
       handleCardClick: (evt) => {
         const newSrc = evt.target.getAttribute("src");
@@ -60,7 +62,7 @@ const cardsSection = new Section ({
 Promise.all([api.getInitialCards(), api.getUserInfo()])
   .then(([cards, user]) => {
     userInfo.setUserInfo(user);
-    userInfo.setUserId(user._id);
+    userInfo.render();
     cardsSection.renderAll(cards);
   });
 
@@ -112,6 +114,7 @@ function formSubmitEditProfileHandler (data) {
   api.updateUserInfo(data)
     .then((data) => {
       userInfo.setUserInfo(data);
+      userInfo.render();
       profilePopup.close();
     })
     .catch(handleError)
@@ -172,6 +175,7 @@ function formSubmitChangeAvatarHandler(data) {
   api.changeAvatar(data)
     .then(() => {
       userInfo.setUserAvatar(data.avatar);
+      userInfo.render();
       changeAvatarPopup.close();
     })
     .catch(handleError)

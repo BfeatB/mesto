@@ -5,29 +5,21 @@ export class UserInfo {
         this.avatar = document.querySelector(avatarSelector);
     }
 
+    render() {
+        this.name.textContent = this._userInfo.name;
+        this.about.textContent = this._userInfo.about;
+        this.avatar.setAttribute('src', this._userInfo.avatar);
+    }
+
+    setUserAvatar(avatar) {
+        this._userInfo.avatar = avatar;
+    }
+
     getUserInfo() {
-        return {
-            name: this.name.textContent,
-            about: this.about.textContent,
-            avatar: this.avatar.getAttribute("src")
-        };
+        return this._userInfo;
     }
 
-    setUserInfo({ name, about, avatar }) {
-        this.name.textContent = name;
-        this.about.textContent = about;
-        this.setUserAvatar(avatar);
-    }
-
-    setUserAvatar (avatar) {
-        this.avatar.setAttribute('src', avatar);
-    }
-
-    getUserId() {
-        return this.userId;
-    }
-
-    setUserId(userId) {
-        this.userId = userId;
+    setUserInfo(userInfo) {
+        this._userInfo = userInfo;
     }
 }
