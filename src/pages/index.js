@@ -37,11 +37,13 @@ function createCard (card) {
             .then((data) => {
               renderLike(data);
             })
+            .catch(handleError)
         } else {
           api.setLike(cardId)
             .then((data) => {
               renderLike(data);
             })
+            .catch(handleError)
         }
       }
     }
