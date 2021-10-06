@@ -5,8 +5,8 @@ export class Section {
         this.containerEl = document.querySelector(containerSelector);
     }
 
-    renderAll() {
-        this.items.forEach(item => {
+    renderAll(extraItems) {
+        this.items.concat(extraItems).forEach(item => {
            this.containerEl.append(this.renderer(item));
         });
     }

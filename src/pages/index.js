@@ -50,18 +50,18 @@ function createCard (card) {
   ).generateCard();
 }
 
+const cardsSection = new Section ({
+  items: [],
+  renderer: createCard
+}, ".cards");
+
 //Render initial cards: 
 
 Promise.all([api.getInitialCards(), api.getUserInfo()])
   .then(([cards, user]) => {
-    const cardsSection = new Section ({
-      items: cards,
-      renderer: createCard
-    }, ".cards");
-    
     userInfo.setUserInfo(user);
     userInfo.setUserId(user._id);
-    cardsSection.renderAll();
+    cardsSection.renderAll(cards);
   });
 
 
@@ -75,7 +75,6 @@ function formSubmitAddCardHandler ({ place, url }) {
   addCardPopup.disableSubmit();
   api.addNewCard(data)
     .then((card) => {
-      const cardsSection = new Section ({}, ".cards");
       cardsSection.addItem(createCard(card));
       addCardPopup.close();
     })
